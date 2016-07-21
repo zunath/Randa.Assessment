@@ -168,7 +168,16 @@
     <Compile Include="Models\TestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Randa.Assessment.Domain\Randa.Assessment.Domain.csproj">
+      <Project>{b8d53a23-9ac5-4c74-8aea-6e5b006f59c5}</Project>
+      <Name>Randa.Assessment.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Randa.Assessment.Services\Randa.Assessment.Services.csproj">
+      <Project>{08addf59-5661-49e0-b394-78156aaad1b7}</Project>
+      <Name>Randa.Assessment.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
