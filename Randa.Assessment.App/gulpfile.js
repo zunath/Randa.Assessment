@@ -7,11 +7,16 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 var ts = require('gulp-typescript');
 var gulp = require('gulp');
 var clean = require('gulp-clean');
-var concat = require('gulp-concat');
+//var concat = require('gulp-concat');
 
 // Delete the dist directory
 gulp.task('clean', function () {
-    return gulp.src("./wwwroot/*")
+    return gulp.src(
+        [
+            "./wwwroot/app/*",
+            "./wwwroot/*.html",
+            "./wwwroot/*.js"
+        ])
         .pipe(clean());
 });
 
@@ -41,7 +46,8 @@ gulp.task("static", function (done) {
 var rootProject = ts.createProject('tsconfig.json');
 gulp.task('root', function (done) {
     var tsResult = gulp.src([
-        "root/*.ts"
+        "root/*.ts",
+        "components/**/*.ts"
     ]).pipe(ts(rootProject), undefined, ts.reporter.fullReporter());
 
     return tsResult.js.pipe(gulp.dest('./wwwroot/app/'));
@@ -49,17 +55,17 @@ gulp.task('root', function (done) {
 });
 
 
-var tsProject = ts.createProject('tsconfig.json');
-gulp.task('typescript', function (done) {
-    var tsResult = gulp.src([
-            "components/footer/footer.component.ts",
-            //"services/**/*.ts"
-    ]).pipe(ts(tsProject), undefined, ts.reporter.fullReporter());
+//var tsProject = ts.createProject('tsconfig.json');
+//gulp.task('typescript', function (done) {
+//    var tsResult = gulp.src([
+//            "components/**/*.ts",
+//            //"services/**/*.ts"
+//    ]).pipe(ts(tsProject), undefined, ts.reporter.fullReporter());
 
-    return tsResult.js
-        //.pipe(concat("compiled.js"))
-        .pipe(gulp.dest('./wwwroot/app/'));
-});
+//    return tsResult.js
+//        //.pipe(concat("compiled.js"))
+//        .pipe(gulp.dest('./wwwroot/app/'));
+//});
 
 
-gulp.task('default', ['root', 'typescript', 'static', 'thirdparty']);
+gulp.task('default', ['root', 'static', 'thirdparty']);
