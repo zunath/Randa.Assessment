@@ -8,7 +8,6 @@ var ts = require('gulp-typescript');
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 var concat = require('gulp-concat');
-var flatten = require('gulp-flatten');
 
 gulp.task('clean', function () {
     return gulp.src(
@@ -23,7 +22,7 @@ gulp.task('clean', function () {
 });
 
 
-gulp.task("thirdparty", function(done) {
+gulp.task("thirdparty", function() {
     gulp.src([
             'core-js/client/**',
             'systemjs/dist/system.src.js',
@@ -33,38 +32,46 @@ gulp.task("thirdparty", function(done) {
             '@angular/**',
             'jquery/dist/jquery.*js',
             'bootstrap/dist/js/bootstrap.*js',
+            'bootstrap/dist/css/bootstrap.min.css'
     ], {
         cwd: "node_modules/**"
     }).pipe(gulp.dest("./wwwroot/libs"));
 });
 
-gulp.task("static", function (done) {
-    gulp.src(["root/Index.html",
-              "root/systemjs.config.js",
-              "root/app.template.html"])
+gulp.task("static", function () {
+    gulp.src(["app/Index.html",
+              "app/systemjs.config.js",
+              "app/app-template.html"])
         .pipe(gulp.dest("./wwwroot/"));
 
-    gulp.src(["components/**/*.template.html"])
-        .pipe(gulp.dest("./wwwroot/templates/"));
+    gulp.src(["app/templates/*.html"])
+        .pipe(gulp.dest("./wwwroot/app/templates/"));
+
+    gulp.src(["app/css/*.css"])
+        .pipe(gulp.dest("./wwwroot/app/css/"));
+
+    gulp.src(["app/images/"])
+        .pipe(gulp.dest("./wwwroot/app/"));
+
+    gulp.src(["app/js/*.js"])
+        .pipe(gulp.dest("./wwwroot/app/js/"));
 });
 
-gulp.task('typescript', function (done) {
+gulp.task('typescript', function () {
     var tsProject = ts.createProject('tsconfig.json');
-    var tsResult = gulp.src([
-        "root/*.ts",
+    gulp.src([
+        "app/*.ts"
     ]).pipe(ts(tsProject), undefined, ts.reporter.fullReporter())
       .js
-      .pipe(flatten())
       .pipe(gulp.dest('./wwwroot/app/'));
 
     tsProject = ts.createProject('tsconfig.json');
-    var tsResult = gulp.src([
-        "root/references.ts",
-        "components/**/*.ts",
+    gulp.src([
+        "app/references.ts",
+        "app/components/*.ts",
+        "app/components/**/*.ts"
     ]).pipe(ts(tsProject), undefined, ts.reporter.fullReporter())
-      .js
-      .pipe(flatten())
-      .pipe(gulp.dest('./wwwroot/app/'));
+      .js.pipe(gulp.dest('./wwwroot/app/components/'));
 
 });
 

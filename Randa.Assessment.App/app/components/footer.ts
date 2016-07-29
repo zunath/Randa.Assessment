@@ -1,6 +1,6 @@
 ﻿import { Component } from '@angular/core';
 @Component({
     selector: 'assessment-footer',
-    templateUrl: '/templates/footer/footer.template.html'
+    templateUrl: './app/templates/footer.html'
 })
 export class FooterComponent { }

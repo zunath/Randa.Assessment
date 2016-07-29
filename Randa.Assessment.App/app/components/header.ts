@@ -1,6 +1,6 @@
 ﻿import { Component } from '@angular/core';
 @Component({
     selector: 'assessment-header',
-    templateUrl: 'templates/header/header.template.html'
+    templateUrl: './app/templates/header.html'
 })
 export class HeaderComponent { }
