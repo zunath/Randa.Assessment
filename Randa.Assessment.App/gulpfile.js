@@ -7,15 +7,17 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 var ts = require('gulp-typescript');
 var gulp = require('gulp');
 var clean = require('gulp-clean');
-//var concat = require('gulp-concat');
+var concat = require('gulp-concat');
+var flatten = require('gulp-flatten');
 
-// Delete the dist directory
 gulp.task('clean', function () {
     return gulp.src(
         [
-            "./wwwroot/app/*",
+            // Intentionally NOT cleaning libs because of how slow they are to pipe to wwwroot.
+            "./wwwroot/app/",
             "./wwwroot/*.html",
-            "./wwwroot/*.js"
+            "./wwwroot/*.js",
+            "./wwwroot/templates/"
         ])
         .pipe(clean());
 });
@@ -40,32 +42,30 @@ gulp.task("static", function (done) {
     gulp.src(["root/Index.html",
               "root/systemjs.config.js",
               "root/app.template.html"])
-        .pipe(gulp.dest("./wwwroot/"))
+        .pipe(gulp.dest("./wwwroot/"));
+
+    gulp.src(["components/**/*.template.html"])
+        .pipe(gulp.dest("./wwwroot/templates/"));
 });
 
-var rootProject = ts.createProject('tsconfig.json');
-gulp.task('root', function (done) {
+gulp.task('typescript', function (done) {
+    var tsProject = ts.createProject('tsconfig.json');
     var tsResult = gulp.src([
         "root/*.ts",
-        "components/**/*.ts"
-    ]).pipe(ts(rootProject), undefined, ts.reporter.fullReporter());
+    ]).pipe(ts(tsProject), undefined, ts.reporter.fullReporter())
+      .js
+      .pipe(flatten())
+      .pipe(gulp.dest('./wwwroot/app/'));
 
-    return tsResult.js.pipe(gulp.dest('./wwwroot/app/'));
+    tsProject = ts.createProject('tsconfig.json');
+    var tsResult = gulp.src([
+        "root/references.ts",
+        "components/**/*.ts",
+    ]).pipe(ts(tsProject), undefined, ts.reporter.fullReporter())
+      .js
+      .pipe(flatten())
+      .pipe(gulp.dest('./wwwroot/app/'));
 
 });
 
-
-//var tsProject = ts.createProject('tsconfig.json');
-//gulp.task('typescript', function (done) {
-//    var tsResult = gulp.src([
-//            "components/**/*.ts",
-//            //"services/**/*.ts"
-//    ]).pipe(ts(tsProject), undefined, ts.reporter.fullReporter());
-
-//    return tsResult.js
-//        //.pipe(concat("compiled.js"))
-//        .pipe(gulp.dest('./wwwroot/app/'));
-//});
-
-
-gulp.task('default', ['root', 'static', 'thirdparty']);
+gulp.task('default', ['typescript', 'static', 'thirdparty']);
