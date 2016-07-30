@@ -12,7 +12,7 @@ namespace Randa.Assessment.Api
             config.MapHttpAttributeRoutes();
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
 
-            builder.EntitySet<District>("Districts");
+            builder.EntitySet<District>("District");
 
             config.MapODataServiceRoute("ODataRoute", "api", builder.GetEdmModel());
         }

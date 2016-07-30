@@ -5,25 +5,15 @@ import 'rxjs/add/operator/map';
 
 
 import { District } from '../models/district';
+import { ODataService } from './odataService'
 
 @Injectable()
 export class DistrictService {
-    constructor(private http: Http) {
+    constructor(private http: Http, private service : ODataService) {
     }
-
-    private url = 'http://localhost:51513/api/Districts/';
-
-    public getDistricts(): District[] {
-
-        let districts = [
-            new District(1, 'district 1'),
-            new District(2, 'district 2'),
-            new District(3, 'district 3'),
-            new District(4, 'district 4'),
-            new District(5, 'district 5')
-        ];
-        
-        return districts;
+    
+    public getDistricts(): Observable<District[]> {
+        return this.service.getList<District>('District');
     }
 
     private extractData(res: Response) {

@@ -15,8 +15,7 @@ export class DistrictListComponent implements OnInit {
     public districts: District[];
 
     ngOnInit() {
-
-        this.districts = this.service.getDistricts();
+        this.service.getDistricts().subscribe(districts => this.districts = districts);
     }
 
 }

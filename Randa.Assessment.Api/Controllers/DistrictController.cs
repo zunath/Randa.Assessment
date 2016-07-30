@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http.Cors;
 using System.Web.OData;
 using Randa.Assessment.Api.Models;
 
 namespace Randa.Assessment.Api.Controllers
 {
-    public class DistrictsController : ODataController
+    public class DistrictController : ODataController
     {
-
+        [EnableCors(origins: "http://localhost:63628", headers: "*", methods:"*")]
         public IQueryable<District> Get()
         {
             List<District> districts = new List<District>();

@@ -15,6 +15,7 @@ namespace Randa.Assessment.Api
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(config =>
             {
+                config.EnableCors();
                 ODataConfig.Register(config);
                 WebApiConfig.Register(config);
             });
