@@ -31,7 +31,7 @@ var sourcePaths = {
     templates: 'app/templates/',
     index: 'app/Index.html',
     jsconfig: 'app/systemjs.config.js',
-    appTemplate: 'app/app-template.html',
+    appTemplate: 'app/Layout.html',
     components: 'app/components/',
     tsconfig: 'tsconfig.json',
     references: 'app/references.ts',
