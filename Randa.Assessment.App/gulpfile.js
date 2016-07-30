@@ -18,7 +18,8 @@ var distPaths = {
     css: 'wwwroot/app/css/',
     js: 'wwwroot/app/js/',
     images: 'wwwroot/app/images/',
-    components: 'wwwroot/app/components/'
+    components: 'wwwroot/app/components/',
+    models: 'wwwroot/app/models'
 };
 
 var sourcePaths = {
@@ -31,7 +32,10 @@ var sourcePaths = {
     index: 'app/Index.html',
     jsconfig: 'app/systemjs.config.js',
     appTemplate: 'app/app-template.html',
-    components: 'app/components/'
+    components: 'app/components/',
+    tsconfig: 'tsconfig.json',
+    references: 'app/references.ts',
+    models: 'app/models/'
 };
 
 
@@ -62,7 +66,7 @@ gulp.task("thirdparty", function() {
 });
 
 gulp.task('images', function () {
-    return gulp.src(["app/images/*"])
+    return gulp.src([sourcePaths.images + "*"])
         .pipe(gulp.dest(distPaths.images))
         .pipe(connect.reload());
 });
@@ -94,8 +98,7 @@ gulp.task("root", function () {
 });
 
 gulp.task('typescript', function () {
-    var configFile = 'tsconfig.json';
-    var tsProject = ts.createProject(configFile);
+    var tsProject = ts.createProject(sourcePaths.tsconfig);
     gulp.src([
         sourcePaths.app + "*.ts"
     ]).pipe(ts(tsProject), undefined, ts.reporter.fullReporter())
@@ -103,11 +106,13 @@ gulp.task('typescript', function () {
       .pipe(gulp.dest(distPaths.app))
       .pipe(connect.reload());
 
-    tsProject = ts.createProject(configFile);
+    tsProject = ts.createProject(sourcePaths.tsconfig);
     gulp.src([
-        "app/references.ts",
+        sourcePaths.references,
         sourcePaths.components + "*.ts",
-        sourcePaths.components + "**/*.ts"
+        sourcePaths.components + "**/*.ts",
+        sourcePaths.models + "*.ts",
+        sourcePaths.models + "**/*.ts"
     ]).pipe(ts(tsProject), undefined, ts.reporter.fullReporter())
       .js.pipe(gulp.dest(distPaths.components))
       .pipe(connect.reload());
@@ -129,7 +134,9 @@ gulp.task('watch', function() {
     gulp.watch([
         sourcePaths.app + '*.ts',
         sourcePaths.components + "*.ts",
-        sourcePaths.components + "**/*.ts"], ['typescript']);
+        sourcePaths.components + "**/*.ts",
+        sourcePaths.models + "*.ts",
+        sourcePaths.models + "**/*.ts"], ['typescript']);
 
 
 });

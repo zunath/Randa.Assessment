@@ -3,4 +3,6 @@
     selector: 'assessment-footer',
     templateUrl: './app/templates/footer.html'
 })
-export class FooterComponent { }
+export class FooterComponent {
+    
+}
