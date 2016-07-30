@@ -6,33 +6,94 @@
         <ul class="nav navbar-nav">
             <li>
                 <a routerLink="/">
+                    <i class="fa fa-home" aria-hidden="true"></i>
                     Home
+                </a>
+            </li>
+            <li class="dropdown">
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="False">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    Communication <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a routerLink="/institutions">
+                            <i class="fa fa-university"></i>
+                            Institutions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-calendar"></i>
+                            Calendar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-comments"></i>
+                            Messaging
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-upload"></i>
+                            File Uploads
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-users"></i>
+                            Users
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a routerLink="/AssessmentAdmin">
+                    <i class="fa fa-cogs"></i>
+                    Assessments
                 </a>
             </li>
             <li>
                 <a routerLink="/StudentManagement">
-                    Student Management
-                </a>
-            </li>
-            <li>
-                <a routerLink="/AssessmentAdmin">
-                    Assessment Administration
+                    <i class="fa fa-child" aria-hidden="true"></i>
+                    Students
                 </a>
             </li>
             <li>
                 <a routerLink="/OrderEntry">
+                    <i class="fa fa-book" aria-hidden="true"></i>
                     Order Entry
                 </a>
             </li>
             <li>
                 <a routerLink="/Reporting">
+                    <i class="fa fa-file" aria-hidden="true"></i>
                     Reporting
                 </a>
             </li>
-            <li>
-                <a routerLink="/Resources">
-                    Resources
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="False">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                    Resources <span class="caret"></span>
                 </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-file-text" aria-hidden="true"></i>
+                            Training Resources
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            Contact Information
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-ticket" aria-hidden="true"></i>
+                            Support Ticket
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

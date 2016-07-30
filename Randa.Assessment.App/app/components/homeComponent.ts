@@ -2,7 +2,7 @@
 
 @Component({
     selector: 'assessment-home',
-    templateUrl: './app/templates/home.html',
+    templateUrl: './templates/home.html',
     directives: []
 })
 export class HomeComponent {

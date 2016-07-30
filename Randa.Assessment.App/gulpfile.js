@@ -12,30 +12,16 @@ var connect = require('gulp-connect');
 
 var distPaths = {
     root: 'wwwroot/',
-    app: 'wwwroot/app/',
-    templates: 'wwwroot/app/templates/',
     libs: 'wwwroot/libs/',
-    css: 'wwwroot/app/css/',
-    js: 'wwwroot/app/js/',
-    images: 'wwwroot/app/images/',
-    components: 'wwwroot/app/components/',
-    models: 'wwwroot/app/models'
+    images: 'wwwroot/images/',
+    fonts: 'wwwroot/fonts/'
 };
 
 var sourcePaths = {
     app: 'app/',
-    css: 'app/css/',
     images: 'app/images/',
-    js: 'app/js/',
-    services: 'app/services/',
-    templates: 'app/templates/',
-    index: 'app/Index.html',
-    jsconfig: 'app/systemjs.config.js',
-    appTemplate: 'app/Layout.html',
-    components: 'app/components/',
     tsconfig: 'tsconfig.json',
-    references: 'app/references.ts',
-    models: 'app/models/'
+    fonts: 'app/fonts/'
 };
 
 
@@ -66,77 +52,58 @@ gulp.task("thirdparty", function() {
 });
 
 gulp.task('images', function () {
-    return gulp.src([sourcePaths.images + "*"])
+    return gulp.src([sourcePaths.images + "**/*"])
         .pipe(gulp.dest(distPaths.images))
         .pipe(connect.reload());
 });
 
-gulp.task('templates', function() {
-    return gulp.src([sourcePaths.templates + "*.html"])
-        .pipe(gulp.dest(distPaths.templates))
+gulp.task('html', function() {
+    return gulp.src([sourcePaths.app + "**/*.html"])
+        .pipe(gulp.dest(distPaths.root))
         .pipe(connect.reload());
 });
 
 gulp.task('css', function() {
-    return gulp.src([sourcePaths.css + "*.css"])
-        .pipe(gulp.dest(distPaths.css))
+    return gulp.src([sourcePaths.app + "**/*.css"])
+        .pipe(gulp.dest(distPaths.root))
         .pipe(connect.reload());
 });
 
 gulp.task('js', function() {
-    return gulp.src([sourcePaths.js + "*.js"])
-        .pipe(gulp.dest(distPaths.js))
+    return gulp.src([sourcePaths.app + "**/*.js"])
+        .pipe(gulp.dest(distPaths.root))
         .pipe(connect.reload());
 });
 
-gulp.task("root", function () {
-    return gulp.src([sourcePaths.index,
-              sourcePaths.jsconfig,
-              sourcePaths.appTemplate])
-        .pipe(gulp.dest(distPaths.root))
+gulp.task('fonts', function() {
+    return gulp.src([sourcePaths.fonts + "**/*"])
+        .pipe(gulp.dest(distPaths.fonts))
         .pipe(connect.reload());
 });
 
 gulp.task('typescript', function () {
     var tsProject = ts.createProject(sourcePaths.tsconfig);
     gulp.src([
-        sourcePaths.app + "*.ts"
+        sourcePaths.app + '**/*.ts'
     ]).pipe(ts(tsProject), undefined, ts.reporter.fullReporter())
       .js
-      .pipe(gulp.dest(distPaths.app))
+      .pipe(gulp.dest(distPaths.root))
       .pipe(connect.reload());
-
-    tsProject = ts.createProject(sourcePaths.tsconfig);
-    gulp.src([
-        sourcePaths.references,
-        sourcePaths.components + "*.ts",
-        sourcePaths.components + "**/*.ts",
-        sourcePaths.models + "*.ts",
-        sourcePaths.models + "**/*.ts"
-    ]).pipe(ts(tsProject), undefined, ts.reporter.fullReporter())
-      .js.pipe(gulp.dest(distPaths.components))
-      .pipe(connect.reload());
-
 });
 
 gulp.task('watch', function() {
     connect.server({
-        root: distPaths.app,
+        root: distPaths.root,
         port: 1987,
         livereload: true
     });
 
-    gulp.watch([sourcePaths.images + "*"], ['images']);
-    gulp.watch([sourcePaths.index, sourcePaths.jsconfig, sourcePaths.appTemplate], ['root']);
-    gulp.watch([sourcePaths.templates + "*"], ['templates']);
-    gulp.watch([sourcePaths.css + '*'], ['css']);
-    gulp.watch([sourcePaths.js + '*'], ['js']);
-    gulp.watch([
-        sourcePaths.app + '*.ts',
-        sourcePaths.components + "*.ts",
-        sourcePaths.components + "**/*.ts",
-        sourcePaths.models + "*.ts",
-        sourcePaths.models + "**/*.ts"], ['typescript']);
+    gulp.watch([sourcePaths.images + "**/*"], ['images']);
+    gulp.watch([sourcePaths.app + "**/*.html"], ['html']);
+    gulp.watch([sourcePaths.app + '**/*.css'], ['css']);
+    gulp.watch([sourcePaths.app + '**/*.js'], ['js']);
+    gulp.watch([sourcePaths.fonts + '**/*'], ['fonts']);
+    gulp.watch([sourcePaths.app + '**/*.ts'], ['typescript']);
 
 
 });
@@ -144,10 +111,10 @@ gulp.task('watch', function() {
 gulp.task('default',
     [
         'typescript',
-        'root',
         'images',
         'js',
-        'templates',
+        'fonts',
+        'html',
         'css',
         'thirdparty'
     ]);

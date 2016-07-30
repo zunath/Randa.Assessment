@@ -1,9 +1,9 @@
 ﻿import { provideRouter, RouterConfig } from '@angular/router';
 
-import { MessageListComponent } from './components/messageList';
-import { HomeComponent } from './components/home';
+import { HomeComponent } from './components/homeComponent';
+import { InstitutionComponent } from './components/communication/institutionComponent';
 
 export const appRoutes = [
-    { path: '', component: HomeComponent},
-    { path: 'messageList/id', component: MessageListComponent}
+    { path: '', component: HomeComponent },
+    { path: 'institutions', component: InstitutionComponent}
 ];
