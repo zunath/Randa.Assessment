@@ -13,9 +13,7 @@ namespace Randa.Assessment.Api.Controllers
     {
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly ICommandDispatcher _commandDispatcher;
-
-        public DistrictController() { }
-
+        
         public DistrictController(IQueryDispatcher queryDispatcher, 
             ICommandDispatcher commandDispatcher )
         {
