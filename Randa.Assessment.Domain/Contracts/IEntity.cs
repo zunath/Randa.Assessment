@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using FluentValidation.Results;
 
 namespace Randa.Assessment.Domain.Contracts
 {
-    interface IEntity
+    public interface IEntity
     {
         bool IsValid(out IList<ValidationFailure> errors);
     }

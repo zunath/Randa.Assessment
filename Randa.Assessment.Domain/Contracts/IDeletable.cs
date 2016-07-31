@@ -1,6 +1,6 @@
 ﻿namespace Randa.Assessment.Domain.Contracts
 {
-    interface IDeletable
+    public interface IDeletable
     {
         void MarkAsDeleted();
     }
