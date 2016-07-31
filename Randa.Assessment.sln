@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Randa.Assessment.Api", "Randa.Assessment.Api\Randa.Assessment.Api.csproj", "{14E7F05F-ED33-452E-BAE8-01B4F82EEC62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Randa.Assessment.CQRS", "Randa.Assessment.Services\Randa.Assessment.CQRS.csproj", "{08ADDF59-5661-49E0-B394-78156AAAD1B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Randa.Assessment.CQRS", "Randa.Assessment.CQRS\Randa.Assessment.CQRS.csproj", "{08ADDF59-5661-49E0-B394-78156AAAD1B7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Randa.Assessment.Domain", "Randa.Assessment.Domain\Randa.Assessment.Domain.csproj", "{B8D53A23-9AC5-4C74-8AEA-6E5B006F59C5}"
 EndProject
