@@ -186,6 +186,7 @@
     <Compile Include="Controllers\FooterController.cs" />
     <Compile Include="Controllers\HeaderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstitutionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -249,6 +250,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Header\Index.cshtml" />
     <Content Include="Views\Footer\Index.cshtml" />
+    <Content Include="Views\Institutions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

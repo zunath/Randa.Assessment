@@ -1,0 +1,13 @@
+﻿@model Randa.Assessment.Domain.Services.Query.Results.DistrictListQueryResult
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@foreach (var record in @Model)
+{
+    <span>@record.Name</span>
+    <br/>
+}
