@@ -53,9 +53,11 @@
     <Compile Include="Entities\AcademicYear.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\District.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\AcademicYearValidator.cs" />
     <Compile Include="Validators\AddressValidator.cs" />
+    <Compile Include="Validators\DistrictValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

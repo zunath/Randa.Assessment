@@ -2,24 +2,35 @@
 using System.Linq;
 using System.Web.Http.Cors;
 using System.Web.OData;
-using Randa.Assessment.Api.Models;
+using Randa.Assessment.CQRS.Contracts;
+using Randa.Assessment.CQRS.Queries;
+using Randa.Assessment.Domain.Entities;
 
 namespace Randa.Assessment.Api.Controllers
 {
+    [EnableCors(origins: "http://localhost:63628", headers: "*", methods: "*")]
     public class DistrictController : ODataController
     {
-        [EnableCors(origins: "http://localhost:63628", headers: "*", methods:"*")]
+        private readonly IQueryDispatcher _queryDispatcher;
+        private readonly ICommandDispatcher _commandDispatcher;
+
+        public DistrictController() { }
+
+        public DistrictController(IQueryDispatcher queryDispatcher, 
+            ICommandDispatcher commandDispatcher )
+        {
+            _queryDispatcher = queryDispatcher;
+            _commandDispatcher = commandDispatcher;
+        }
+
         public IQueryable<District> Get()
         {
-            List<District> districts = new List<District>();
-            districts.Add(new District { Id = 1, Name = "District 1" });
-            districts.Add(new District { Id = 2, Name = "District 2" });
-            districts.Add(new District { Id = 3, Name = "District 3" });
-            districts.Add(new District { Id = 4, Name = "District 4" });
-            districts.Add(new District { Id = 5, Name = "District 5" });
+            GetActiveDistrictsQuery query = new GetActiveDistrictsQuery();
 
-            return districts.AsQueryable();
+            return _queryDispatcher.Execute<GetActiveDistrictsQuery, List<District>>(query).AsQueryable();
         }
+
+
 
     }
 }

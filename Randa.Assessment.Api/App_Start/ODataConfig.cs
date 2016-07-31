@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
-using Randa.Assessment.Api.Models;
+using Randa.Assessment.Domain.Entities;
 
 namespace Randa.Assessment.Api
 {

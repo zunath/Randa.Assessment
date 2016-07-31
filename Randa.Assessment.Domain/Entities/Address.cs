@@ -4,7 +4,7 @@ using Randa.Assessment.Domain.Validators;
 
 namespace Randa.Assessment.Domain.Entities
 {
-    internal class Address: BaseEntity
+    public class Address: BaseEntity
     {
         public int AddressId { get; set; }
         public string AddressType { get; set; }
