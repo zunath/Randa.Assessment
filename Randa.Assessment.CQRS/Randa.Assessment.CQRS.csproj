@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Contracts\IQueryResult.cs" />
     <Compile Include="Dispatchers\CommandDispatcher.cs" />
     <Compile Include="Commands\CreateDistrictCommand.cs" />
     <Compile Include="Contracts\ICommand.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Dispatchers\QueryDispatcher.cs" />
     <Compile Include="Queries\GetActiveDistrictsQuery.cs" />
     <Compile Include="Queries\Handlers\GetActiveDistrictsHandler.cs" />
+    <Compile Include="Queries\Results\DistrictListQueryResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Randa.Assessment.Domain\Randa.Assessment.Domain.csproj">

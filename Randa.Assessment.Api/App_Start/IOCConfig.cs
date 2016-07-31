@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Web.Http;
 using Autofac;
@@ -8,6 +9,7 @@ using Randa.Assessment.CQRS.Contracts;
 using Randa.Assessment.CQRS.Dispatchers;
 using Randa.Assessment.CQRS.Queries;
 using Randa.Assessment.CQRS.Queries.Handlers;
+using Randa.Assessment.CQRS.Queries.Results;
 using Randa.Assessment.Domain.Entities;
 
 namespace Randa.Assessment.Api
@@ -23,7 +25,9 @@ namespace Randa.Assessment.Api
             builder.RegisterType<CommandDispatcher>().As<ICommandDispatcher>();
             builder.RegisterType<QueryDispatcher>().As<IQueryDispatcher>();
             
-            builder.RegisterType<GetActiveDistrictsHandler>().As<IQueryHandler<GetActiveDistrictsQuery, List<District>>>();
+
+            builder.RegisterType<GetActiveDistrictsHandler>().As<IQueryHandler<GetActiveDistrictsQuery, DistrictListQueryResult>>();
+
 
             config.DependencyResolver = new AutofacWebApiDependencyResolver(builder.Build());
         }

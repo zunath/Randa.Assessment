@@ -15,6 +15,7 @@ namespace Randa.Assessment.CQRS.Dispatchers
 
         public TResult Execute<TQuery, TResult>(TQuery query) 
             where TQuery : IQuery
+            where TResult: IQueryResult
         {
             if (query == null)
             {

@@ -4,6 +4,7 @@ using System.Web.Http.Cors;
 using System.Web.OData;
 using Randa.Assessment.CQRS.Contracts;
 using Randa.Assessment.CQRS.Queries;
+using Randa.Assessment.CQRS.Queries.Results;
 using Randa.Assessment.Domain.Entities;
 
 namespace Randa.Assessment.Api.Controllers
@@ -25,7 +26,7 @@ namespace Randa.Assessment.Api.Controllers
         {
             GetActiveDistrictsQuery query = new GetActiveDistrictsQuery();
 
-            return _queryDispatcher.Execute<GetActiveDistrictsQuery, List<District>>(query).AsQueryable();
+            return _queryDispatcher.Execute<GetActiveDistrictsQuery, DistrictListQueryResult>(query).AsQueryable();
         }
 
 
