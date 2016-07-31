@@ -51,9 +51,11 @@
   <ItemGroup>
     <Compile Include="Contracts\IDeletable.cs" />
     <Compile Include="Contracts\IEntity.cs" />
+    <Compile Include="Contracts\IValidatorFactory.cs" />
     <Compile Include="Entities\AcademicYear.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Calendar.cs" />
     <Compile Include="Entities\District.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\AcademicYearValidator.cs" />

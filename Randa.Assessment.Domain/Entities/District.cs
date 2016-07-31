@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FluentValidation.Results;
-using Randa.Assessment.Domain.Validators;
+using Randa.Assessment.Domain.Contracts;
 
 namespace Randa.Assessment.Domain.Entities
 {
@@ -12,16 +11,9 @@ namespace Randa.Assessment.Domain.Entities
         public string Region { get; set; }
         public string Name { get; set; }
 
-        public District(int userId) 
-            : base(userId)
+        public District(int userId, IValidatorFactory validatorFactory) 
+            : base(userId, validatorFactory)
         {
-        }
-
-        public override bool IsValid(out IList<ValidationFailure> errors)
-        {
-            var result = new DistrictValidator().Validate(this);
-            errors = result.Errors;
-            return result.IsValid;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using FluentValidation.Results;
+using Randa.Assessment.Domain.Contracts;
 using Randa.Assessment.Domain.Validators;
 
 namespace Randa.Assessment.Domain.Entities
@@ -16,16 +17,10 @@ namespace Randa.Assessment.Domain.Entities
         public string StateAbbreviation { get; set; }
         public string PostalCode { get; set; }
 
-        public Address(int userId) 
-            : base(userId)
-        {
-        }
 
-        public override bool IsValid(out IList<ValidationFailure> errors)
+        public Address(int userId, IValidatorFactory validatorFactory) 
+            : base(userId, validatorFactory)
         {
-            var result = new AddressValidator().Validate(this);
-            errors = result.Errors;
-            return result.IsValid;
         }
     }
 }

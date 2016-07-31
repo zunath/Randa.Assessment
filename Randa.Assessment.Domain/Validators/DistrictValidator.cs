@@ -3,11 +3,12 @@ using Randa.Assessment.Domain.Entities;
 
 namespace Randa.Assessment.Domain.Validators
 {
-    class DistrictValidator: AbstractValidator<District>
+    public class DistrictValidator: AbstractValidator<District>
     {
         public DistrictValidator()
         {
-            
+            RuleFor(x => x.Name)
+                .Length(0, 100);
         }
     }
 }

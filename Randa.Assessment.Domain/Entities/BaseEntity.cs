@@ -24,6 +24,8 @@ namespace Randa.Assessment.Domain.Entities
         public bool IsDeleted { get; protected set; }
         public dynamic Properties { get; set; }
 
+        private readonly IValidatorFactory _validatorFactory;
+
         public string PropertiesJson
         {
             get
@@ -33,7 +35,7 @@ namespace Randa.Assessment.Domain.Entities
             }
         }
 
-        public BaseEntity(int userId, string globalId, dynamic properties = null)
+        protected BaseEntity(int userId, string globalId, IValidatorFactory validatorFactory, dynamic properties = null)
         {
             if (string.IsNullOrWhiteSpace(globalId)) { throw new ArgumentNullException(nameof(globalId)); }
 
@@ -43,15 +45,26 @@ namespace Randa.Assessment.Domain.Entities
             GlobalId = globalId;
             Properties = properties ?? new ExpandoObject();
             IsDeleted = false;
+
+            _validatorFactory = validatorFactory;
         }
 
-        public BaseEntity(int userId) : this(userId, Guid.NewGuid().ToString()) { }
+        protected BaseEntity(int userId, IValidatorFactory validatorFactory)
+            : this(userId, Guid.NewGuid().ToString(), validatorFactory)
+        {
+            
+        }
 
         public void MarkAsDeleted()
         {
             IsDeleted = true;
         }
 
-        public abstract bool IsValid(out IList<ValidationFailure> errors);
+        public bool IsValid(out IList<ValidationFailure> errors)
+        {
+            var result = _validatorFactory.GetValidator(GetType()).Validate(this);
+            errors = result.Errors;
+            return result.IsValid;
+        }
     }
 }
