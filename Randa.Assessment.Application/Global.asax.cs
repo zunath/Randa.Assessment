@@ -2,7 +2,6 @@
 using System.Web.Optimization;
 using System.Web.Routing;
 using FluentValidation.Mvc;
-using Randa.Assessment.Infrastructure.Factory;
 
 namespace Randa.Assessment.Application
 {

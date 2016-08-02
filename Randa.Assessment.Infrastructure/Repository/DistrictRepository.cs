@@ -1,7 +1,7 @@
 ﻿using Randa.Assessment.Domain.Contracts;
 using Randa.Assessment.Domain.Entities;
+using Randa.Assessment.Domain.Services.Contracts.Repository;
 using Randa.Assessment.Domain.Services.Query.Results;
-using Randa.Assessment.Domain.Services.Repository;
 
 namespace Randa.Assessment.Infrastructure.Repository
 {

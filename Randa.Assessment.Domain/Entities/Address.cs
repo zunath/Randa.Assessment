@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using FluentValidation.Results;
-using Randa.Assessment.Domain.Contracts;
-using Randa.Assessment.Domain.Validators;
+﻿using Randa.Assessment.Domain.Contracts;
 
 namespace Randa.Assessment.Domain.Entities
 {

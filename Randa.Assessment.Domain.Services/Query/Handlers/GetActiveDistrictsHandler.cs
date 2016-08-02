@@ -1,7 +1,6 @@
-﻿using Randa.Assessment.Domain.Entities;
-using Randa.Assessment.Domain.Services.Contracts;
+﻿using Randa.Assessment.Domain.Services.Contracts.CQRS;
+using Randa.Assessment.Domain.Services.Contracts.Repository;
 using Randa.Assessment.Domain.Services.Query.Results;
-using Randa.Assessment.Domain.Services.Repository;
 
 namespace Randa.Assessment.Domain.Services.Query.Handlers
 {

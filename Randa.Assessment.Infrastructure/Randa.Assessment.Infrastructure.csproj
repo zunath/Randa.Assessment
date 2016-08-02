@@ -64,7 +64,9 @@
     <Compile Include="Dispatcher\CommandDispatcher.cs" />
     <Compile Include="Dispatcher\QueryDispatcher.cs" />
     <Compile Include="Factory\AutofacValidatorFactory.cs" />
+    <Compile Include="Factory\DataParserFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\DataImporterRepository.cs" />
     <Compile Include="Repository\DistrictRepository.cs" />
   </ItemGroup>
   <ItemGroup>
