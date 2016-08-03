@@ -1,20 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Dapper;
+using Dapper.Extensions.Linq.Extensions;
 using Randa.Assessment.Domain.DataImporter;
 using Randa.Assessment.Domain.Services.Contracts.Repository;
 
 namespace Randa.Assessment.Infrastructure.Repository
 {
-    public class DataImporterRepository: IDataImporterRepository
+    public class DataImporterRepository: BaseRepository, IDataImporterRepository
     {
+        public DataImporterRepository(string connectionString) 
+            : base(connectionString) { }
+
         public DataImportSourceType GetDataSourceType(string dataSourceId)
         {
-            // TODO: Get from DB
-            return new DataImportSourceType
-            {
-                ImportParserType = DataImportParserType.Delimited,
-                DataSourceId = dataSourceId,
-                Name = "EIS"
-            };
+            return WithConnection(c => c.Get<DataImportSourceType>(dataSourceId));
         }
 
         public IEnumerable<DataImportSourceKey> GetDataSourceKeys()
@@ -27,5 +28,6 @@ namespace Randa.Assessment.Infrastructure.Repository
 
             return keys;
         }
+
     }
 }

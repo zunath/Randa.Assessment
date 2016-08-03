@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Randa.Assessment.DataImporter.Configuration;
+using Randa.Assessment.Infrastructure.Dapper;
 
 namespace Randa.Assessment.DataImporter
 {
@@ -12,6 +13,8 @@ namespace Randa.Assessment.DataImporter
             using (var scope = container.BeginLifetimeScope())
             {
                 var app = scope.Resolve<IApplication>();
+                DapperConfig.Initialize();
+
                 app.Run(args);
             }
         }

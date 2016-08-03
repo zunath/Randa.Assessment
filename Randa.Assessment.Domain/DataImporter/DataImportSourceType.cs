@@ -4,6 +4,6 @@
     {
         public string DataSourceId { get; set; }
         public string Name { get; set; }
-        public DataImportParserType ImportParserType { get; set; }
+        public DataImportParserType ParserType { get; set; }
     }
 }
