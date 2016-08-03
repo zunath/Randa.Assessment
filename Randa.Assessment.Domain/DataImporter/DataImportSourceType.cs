@@ -1,9 +1,9 @@
 ﻿namespace Randa.Assessment.Domain.DataImporter
 {
-    public class DataSourceType
+    public class DataImportSourceType
     {
         public string DataSourceId { get; set; }
         public string Name { get; set; }
-        public DataParserType ParserType { get; set; }
+        public DataImportParserType ImportParserType { get; set; }
     }
 }

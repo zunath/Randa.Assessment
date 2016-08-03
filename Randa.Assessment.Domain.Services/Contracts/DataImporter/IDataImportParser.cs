@@ -1,8 +1,10 @@
 ﻿
+using System.Collections.Generic;
+
 namespace Randa.Assessment.Domain.Services.Contracts.DataImporter
 {
-    public interface IDataImportParser
+    public interface IDataImportParser<T>
     {
-        T ParseFile<T>(string fileName);
+        IEnumerable<T> ParseFile (string filePath);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Randa.Assessment.Domain.DataImporter
 {
-    public enum DataParserType
+    public enum DataImportParserType
     {
         Delimited = 1,
         JSON = 2,

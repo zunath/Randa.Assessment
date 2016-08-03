@@ -2,7 +2,7 @@
 
 namespace Randa.Assessment.Domain.DataImporter
 {
-    public class DataEvent
+    public class DataImportEvent
     {
         public int EventId { get; set; }
         public DateTime ImportDate { get; set; }

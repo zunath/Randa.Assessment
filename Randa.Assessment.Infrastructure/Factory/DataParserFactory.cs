@@ -14,9 +14,9 @@ namespace Randa.Assessment.Infrastructure.Factory
             _context = context;
         }
 
-        public IDataImportParser CreateDataParserForSource(string sourceId)
+        public IDataImportParser<T> CreateDataParserForSource<T>(string sourceId)
         {
-            var parser = _context.ResolveOptionalKeyed<IDataImportParser>(sourceId);
+            var parser = _context.Resolve<IDataImportParser<T>>();
             return parser;
         }
     }

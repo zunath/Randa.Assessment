@@ -1,4 +1,4 @@
-﻿using Randa.Assessment.Domain.Services.Query.Results;
+﻿using Randa.Assessment.Domain.Services.Query.Districts.Result;
 
 namespace Randa.Assessment.Domain.Services.Contracts.Repository
 {
