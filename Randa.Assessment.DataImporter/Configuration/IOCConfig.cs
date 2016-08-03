@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Autofac.Core;
+using Randa.Assessment.Application.Services;
+using Randa.Assessment.Application.Services.Contracts;
 using Randa.Assessment.Domain.DataImporter.DataRecords;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
 using Randa.Assessment.Domain.Services.Contracts.DataImporter;
@@ -29,7 +31,10 @@ namespace Randa.Assessment.DataImporter.Configuration
             builder.RegisterType<ReadFileHandler>().As<IQueryHandler<ReadFileQuery, ReadFileResult>>();
 
             // Parsers
-            builder.RegisterType<EISDataFileParser>().As<IDataImportParser<EISDataRecord>>();
+            builder.RegisterType<EISDataFileParser>().Keyed<IDataImportParser>(typeof(EISDataRecord));
+
+            // Services
+            builder.RegisterType<DataImporterService>().As<IDataImporterService>();
 
             return builder.Build();
         }

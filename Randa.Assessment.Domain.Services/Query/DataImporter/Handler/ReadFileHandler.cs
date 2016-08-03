@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Randa.Assessment.Domain.DataImporter.DataRecords;
+﻿using System.Collections;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
 using Randa.Assessment.Domain.Services.Contracts.DataImporter;
 using Randa.Assessment.Domain.Services.Query.DataImporter.Result;
@@ -17,8 +16,8 @@ namespace Randa.Assessment.Domain.Services.Query.DataImporter.Handler
 
         public ReadFileResult Execute(ReadFileQuery query)
         {
-            var parser = _factory.CreateDataParserForSource<EISDataRecord>(query.SourceId);
-            IEnumerable<EISDataRecord> data = parser.ParseFile(query.FilePath);
+            IDataImportParser parser = _factory.CreateDataParserForSource(query.SourceId, query.Type);
+            IEnumerable data = parser.ParseFile(query.FilePath);
             return new ReadFileResult(data);
         }
     }

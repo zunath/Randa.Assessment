@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Randa.Assessment.Application.Services.Contracts;
+using Randa.Assessment.Domain.DataImporter.DataRecords;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
 using Randa.Assessment.Domain.Services.Contracts.DataImporter;
 using Randa.Assessment.Domain.Services.Query.DataImporter;
@@ -8,14 +10,11 @@ namespace Randa.Assessment.DataImporter
 {
     public class App: IApplication
     {
-        private readonly IQueryDispatcher _queryDispatcher;
-        private readonly ICommandDispatcher _commandDispatcher;
+        private readonly IDataImporterService _service;
 
-        public App(IQueryDispatcher queryDispatcher, 
-            ICommandDispatcher commandDispatcher)
+        public App(IDataImporterService service)
         {
-            _queryDispatcher = queryDispatcher;
-            _commandDispatcher = commandDispatcher;
+            _service = service;
         }
 
         public void Run(string[] args)
@@ -23,9 +22,7 @@ namespace Randa.Assessment.DataImporter
             string sourceId = args[0];
             string filePath = args[1];
 
-            var query = new ReadFileQuery(filePath, sourceId);
-            var results = _queryDispatcher.Execute<ReadFileQuery, ReadFileResult>(query);
-
+            _service.ImportDataFile(sourceId, filePath, typeof(EISDataRecord));
         }
     }
 }
