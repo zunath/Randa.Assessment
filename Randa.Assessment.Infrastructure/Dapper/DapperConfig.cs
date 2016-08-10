@@ -18,7 +18,7 @@ namespace Randa.Assessment.Infrastructure.Dapper
             DapperConfiguration
                 .Use()
                 .UseClassMapper(typeof(AutoClassMapper<>))
-                //.UseContainer<DapperContainer>()  // TODO: Write container for autofac
+                .UseContainer<DapperContainer>(delegate {  })
                 .UseSqlDialect(new SqlServerDialect())
                 .FromAssembly("Randa.Assessment.Domain")
                 .Build();

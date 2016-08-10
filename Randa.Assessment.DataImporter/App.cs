@@ -1,10 +1,5 @@
-﻿using System.Collections.Generic;
-using Randa.Assessment.Application.Services.Contracts;
+﻿using Randa.Assessment.Application.Services.Contracts;
 using Randa.Assessment.Domain.DataImporter.DataRecords;
-using Randa.Assessment.Domain.Services.Contracts.CQRS;
-using Randa.Assessment.Domain.Services.Contracts.DataImporter;
-using Randa.Assessment.Domain.Services.Query.DataImporter;
-using Randa.Assessment.Domain.Services.Query.DataImporter.Result;
 
 namespace Randa.Assessment.DataImporter
 {

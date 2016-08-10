@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Randa.Assessment.Application.Services.Contracts;
+using Randa.Assessment.Domain.DataImporter;
 using Randa.Assessment.Domain.DataImporter.DataRecords;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
 using Randa.Assessment.Domain.Services.Contracts.Repository;
@@ -29,8 +30,10 @@ namespace Randa.Assessment.Application.Services
             var query = new ReadFileQuery(filePath, sourceId, type);
             var result = _queryDispatcher.Execute<ReadFileQuery, ReadFileResult>(query);
             List<EISDataRecord> records = result.Data.Cast<EISDataRecord>().ToList();
+            DataImportSourceType sourceType = _repo.GetDataSourceType(sourceId);
 
-            var data = _repo.GetDataSourceType("EIS");
+
+
 
         }
     }

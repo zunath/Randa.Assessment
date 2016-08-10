@@ -6,7 +6,7 @@ namespace Randa.Assessment.Infrastructure.Dapper
     {
         public void Build(DapperConfiguration configuration)
         {
-            configuration.Build();
+
         }
 
         
