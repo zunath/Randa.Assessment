@@ -1,4 +1,6 @@
-﻿namespace Randa.Assessment.Domain.DataImporter
+﻿using Randa.Assessment.Domain.DataImporter.Enums;
+
+namespace Randa.Assessment.Domain.DataImporter
 {
     public class DataImportSourceType
     {

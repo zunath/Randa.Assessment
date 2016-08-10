@@ -56,7 +56,7 @@
     <Compile Include="DataImporter\DataImportEventAudit.cs" />
     <Compile Include="DataImporter\DataImportEventRow.cs" />
     <Compile Include="DataImporter\DataImportSourceType.cs" />
-    <Compile Include="DataImporter\DataImportParserType.cs" />
+    <Compile Include="DataImporter\Enums\DataImportParserType.cs" />
     <Compile Include="DataImporter\DataImportSourceKey.cs" />
     <Compile Include="DataImporter\DataRecords\EISDataRecord.cs" />
     <Compile Include="Entities\AcademicYear.cs" />

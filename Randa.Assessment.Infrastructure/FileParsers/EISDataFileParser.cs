@@ -26,7 +26,19 @@ namespace Randa.Assessment.Infrastructure.FileParsers
                     SchoolID = data[2],
                     Grade = data[3],
                     LastName = data[4],
-                    FirstName = data[5]
+                    FirstName = data[5],
+                    MiddleInitial = data[6],
+                    USID = data[7],
+                    DateOfBirth = data[8],
+                    EthnicOrigin = data[9],
+                    IsRaceIndian = Convert.ToBoolean(Convert.ToInt16(data[10])),
+                    IsRaceAsian = Convert.ToBoolean(Convert.ToInt16(data[11])),
+                    IsRaceBlack = Convert.ToBoolean(Convert.ToInt16(data[12])),
+                    IsRacePacificIslander = Convert.ToBoolean(Convert.ToInt16(data[13])),
+                    IsRaceWhite = Convert.ToBoolean(Convert.ToInt16(data[14])),
+                    IsRaceUnspecified = Convert.ToBoolean(Convert.ToInt16(data[15])),
+                    Gender = data[16],
+                    CodeAB = data[17]
                 };
 
                 records.Add(record);

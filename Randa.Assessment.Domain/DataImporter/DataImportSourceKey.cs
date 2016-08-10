@@ -3,7 +3,7 @@
     public class DataImportSourceKey
     {
         public int DataImportSourceKeyId { get; set; }
-        public string SourceId { get; set; }
+        public string DataSourceId { get; set; }
         public string Key { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Randa.Assessment.Domain.DataImporter
+﻿namespace Randa.Assessment.Domain.DataImporter.Enums
 {
     public enum DataImportParserType
     {
