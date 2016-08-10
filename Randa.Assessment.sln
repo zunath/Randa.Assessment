@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Randa.Assessment.Tests", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Randa.Assessment.DataImporter", "Randa.Assessment.DataImporter\Randa.Assessment.DataImporter.csproj", "{D346B2B5-AB02-4C62-8266-48900B325B07}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Content", "Content", "{F8006413-D041-4E89-B08E-A62052E8AB8A}"
+	ProjectSection(SolutionItems) = preProject
+		BuildDatabase.sql = BuildDatabase.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
