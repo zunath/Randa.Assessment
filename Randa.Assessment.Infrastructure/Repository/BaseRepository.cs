@@ -69,12 +69,12 @@ namespace Randa.Assessment.Infrastructure.Repository
             );
         }
 
-        protected int SaveEntity<T>(T entity, string columnName, string tableName=null)
+        protected int SaveEntity<T>(T entity, string columnName, string tableName=null, bool isIdentity = true)
             where T: class
         {
             return WithConnection(c =>
             {
-                string sql = _sqlHelper.CreateSaveString(entity, columnName, tableName);
+                string sql = _sqlHelper.CreateSaveString(entity, columnName, tableName, isIdentity);
                 return c.Execute(sql);
             });
         }

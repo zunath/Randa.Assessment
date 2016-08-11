@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using Dapper;
 using Randa.Assessment.Domain.DataImporter;
 using Randa.Assessment.Domain.Services.Contracts.Repository;
 using Randa.Assessment.Infrastructure.Helpers.Contracts;
@@ -35,7 +34,7 @@ namespace Randa.Assessment.Infrastructure.Repository
 
         public int Save(DataImportEventRow row)
         {
-            return SaveEntity(row, "KeyHash");
+            return SaveEntity(row, "KeyHash", null, false);
         }
 
         public int Save(DataImportEvent @event)

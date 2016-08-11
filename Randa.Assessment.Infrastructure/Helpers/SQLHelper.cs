@@ -17,8 +17,9 @@ namespace Randa.Assessment.Infrastructure.Helpers
         /// <param name="tableName"></param>
         /// <param name="columnName"></param>
         /// <param name="entity"></param>
+        /// <param name="hasIdentity"></param>
         /// <returns>A sql save string</returns>
-        public string CreateSaveString<T>(T entity, string columnName, string tableName = null) where T : class
+        public string CreateSaveString<T>(T entity, string columnName, string tableName = null, bool hasIdentity = true) where T : class
         {
             if (tableName == null)
             {
@@ -37,20 +38,23 @@ namespace Randa.Assessment.Infrastructure.Helpers
 
             var objValueDict = CreatePropertyValueDictionary(entity);
             var idValue = objValueDict[columnName];
-
+            
             var sb = new StringBuilder();
             sb.AppendLine($"IF EXISTS (SELECT * FROM dbo.{tableName} WITH (updlock, serializable) WHERE {columnName} = {idValue})" +
                             Environment.NewLine + "BEGIN" +
                             Environment.NewLine + $"\tUPDATE dbo.{tableName}" +
                             Environment.NewLine + "\tSET");
 
-
-
-            var stringValues = objValueDict.Where(x => x.Key != columnName).Select(x => $"\t\t{x.Key} = {x.Value}{Environment.NewLine}").ToArray();
+            var stringValues =  objValueDict.Where(x => x.Key != columnName).Select(x => $"\t\t{x.Key} = {x.Value}{Environment.NewLine}").ToArray();
             var updates = string.Join(", ", stringValues);
 
             sb.Append(updates);
-            sb.AppendLine($"\tOUTPUT INSERTED.{columnName}");
+
+            if (hasIdentity)
+            {
+                sb.AppendLine($"\tOUTPUT INSERTED.{columnName}");
+            }
+
             sb.AppendLine($"\tWHERE {columnName} = {idValue}");
 
             sb.AppendLine("END");
@@ -59,13 +63,22 @@ namespace Randa.Assessment.Infrastructure.Helpers
 
             sb.Append($"\tINSERT INTO dbo.{tableName} (");
 
-            var fields = objValueDict.Where(x => x.Key != columnName).Select(x => $"[{x.Key}]").ToArray();
+            var fields = hasIdentity ? 
+                objValueDict.Where(x => x.Key != columnName).Select(x => $"[{x.Key}]").ToArray() 
+                : objValueDict.Select(x => $"[{x.Key}]").ToArray();
+
             var fieldsConcat = string.Join(", ", fields);
 
             sb.AppendLine($"{fieldsConcat})");
-            sb.AppendLine($"\tOUTPUT INSERTED.{columnName}");
 
-            var values = objValueDict.Where(x => x.Key != columnName).Select(x => $"{x.Value}").ToArray();
+            if (hasIdentity)
+            {
+                sb.AppendLine($"\tOUTPUT INSERTED.{columnName}");
+            }
+
+            var values = hasIdentity
+                ? objValueDict.Where(x => x.Key != columnName).Select(x => $"{x.Value}").ToArray()
+                : objValueDict.Select(x => $"{x.Value}").ToArray();
             var valuesConcat = string.Join(", ", values);
 
             sb.AppendLine($"\tVALUES ( {valuesConcat} )");
