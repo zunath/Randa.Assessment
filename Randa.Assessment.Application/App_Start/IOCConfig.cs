@@ -27,7 +27,6 @@ namespace Randa.Assessment.Application
 
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
-            builder.RegisterType<Command>().As<ICommand>();
             builder.RegisterType<CommandDispatcher>().As<ICommandDispatcher>();
             builder.RegisterType<QueryDispatcher>().As<IQueryDispatcher>();
             builder.RegisterType<AutofacValidatorFactory>().As<IValidatorFactory>();

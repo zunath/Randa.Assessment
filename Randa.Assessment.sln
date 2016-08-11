@@ -17,10 +17,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Randa.Assessment.Tests", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Randa.Assessment.DataImporter", "Randa.Assessment.DataImporter\Randa.Assessment.DataImporter.csproj", "{D346B2B5-AB02-4C62-8266-48900B325B07}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Content", "Content", "{F8006413-D041-4E89-B08E-A62052E8AB8A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Content", "0. Content", "{F8006413-D041-4E89-B08E-A62052E8AB8A}"
 	ProjectSection(SolutionItems) = preProject
 		BuildDatabase.sql = BuildDatabase.sql
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Domain", "5. Domain", "{16CF54F0-0F0B-4B20-B484-FE40E40BE0FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Domain Services", "4. Domain Services", "{D6747056-94D7-4D33-9D02-AFA7107350EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Application Services", "3. Application Services", "{E03AFF8B-68FA-4FCB-95BE-C8B5B2C93C81}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Infrastructure", "2. Infrastructure", "{A6A95CC8-FF7B-4BFB-BE0A-88B381FEFD01}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Applications", "1. Applications", "{C866395D-C81C-44BC-B7F1-01D7FFF999E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,5 +69,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{08ADDF59-5661-49E0-B394-78156AAAD1B7} = {D6747056-94D7-4D33-9D02-AFA7107350EE}
+		{B8D53A23-9AC5-4C74-8AEA-6E5B006F59C5} = {16CF54F0-0F0B-4B20-B484-FE40E40BE0FD}
+		{4EC2D5B5-C7B3-4ADB-BC3D-2F64DCBA166C} = {C866395D-C81C-44BC-B7F1-01D7FFF999E3}
+		{1D616481-80F7-46BA-8E89-2E0EC2C341B5} = {E03AFF8B-68FA-4FCB-95BE-C8B5B2C93C81}
+		{19DE2C11-DBC0-4AB1-A42F-DEBC221FAD0D} = {A6A95CC8-FF7B-4BFB-BE0A-88B381FEFD01}
+		{F2D1DA2F-0A0D-4B37-83E3-5A455F890F8E} = {C866395D-C81C-44BC-B7F1-01D7FFF999E3}
+		{D346B2B5-AB02-4C62-8266-48900B325B07} = {C866395D-C81C-44BC-B7F1-01D7FFF999E3}
 	EndGlobalSection
 EndGlobal

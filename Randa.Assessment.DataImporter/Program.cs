@@ -1,6 +1,6 @@
-﻿using Autofac;
-using Randa.Assessment.DataImporter.Configuration;
-using Randa.Assessment.Infrastructure.Dapper;
+﻿using System.Configuration;
+using Autofac;
+using Randa.Assessment.Infrastructure.IOC;
 
 namespace Randa.Assessment.DataImporter
 {
@@ -8,12 +8,11 @@ namespace Randa.Assessment.DataImporter
     {
         static void Main(string[] args)
         {
-            var container = IOCConfig.Initialize();
+            var container = IOCConfig.Initialize(typeof(App), ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
 
             using (var scope = container.BeginLifetimeScope())
             {
                 var app = scope.Resolve<IApplication>();
-                DapperConfig.Initialize();
 
                 app.Run(args);
             }

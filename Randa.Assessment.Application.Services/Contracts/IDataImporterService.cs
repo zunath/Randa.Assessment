@@ -4,6 +4,6 @@ namespace Randa.Assessment.Application.Services.Contracts
 {
     public interface IDataImporterService
     {
-        void ImportDataFile(string sourceId, string filePath, Type type);
+        void ImportDataFile(string dataSourceId, string filePath, Type type);
     }
 }
