@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
 
-namespace Randa.Assessment.Domain.Services.Command.DataImporter.Commands
+namespace Randa.Assessment.Domain.Services.Command.DataImporter
 {
     public class ProcessDataImportEventCommand: ICommand
     {

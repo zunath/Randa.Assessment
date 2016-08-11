@@ -2,7 +2,6 @@
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
 using Randa.Assessment.Domain.Services.Query;
 using Randa.Assessment.Domain.Services.Query.Districts;
-using Randa.Assessment.Domain.Services.Query.Districts.Result;
 
 namespace Randa.Assessment.Application.Controllers
 {

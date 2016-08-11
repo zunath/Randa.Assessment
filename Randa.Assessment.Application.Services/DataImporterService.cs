@@ -1,10 +1,9 @@
 ﻿using System;
 using System.IO;
 using Randa.Assessment.Application.Services.Contracts;
-using Randa.Assessment.Domain.Services.Command.DataImporter.Commands;
+using Randa.Assessment.Domain.Services.Command.DataImporter;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
 using Randa.Assessment.Domain.Services.Query.DataImporter;
-using Randa.Assessment.Domain.Services.Query.DataImporter.Result;
 
 namespace Randa.Assessment.Application.Services
 {

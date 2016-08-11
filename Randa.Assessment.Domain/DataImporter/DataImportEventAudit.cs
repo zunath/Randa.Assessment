@@ -4,7 +4,8 @@ namespace Randa.Assessment.Domain.DataImporter
 {
     public class DataImportEventAudit
     {
-        public int EventDeltaId { get; set; }
+        public int EventAuditId { get; set; }
+        public int EventId { get; set; }
         public string DataSourceId { get; set; }
         public string JSON { get; set; }
         public string DataHash { get; set; }

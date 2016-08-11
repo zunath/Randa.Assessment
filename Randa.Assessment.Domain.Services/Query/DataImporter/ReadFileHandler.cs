@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
 using Randa.Assessment.Domain.Services.Contracts.DataImporter;
-using Randa.Assessment.Domain.Services.Query.DataImporter.Result;
 
-namespace Randa.Assessment.Domain.Services.Query.DataImporter.Handler
+namespace Randa.Assessment.Domain.Services.Query.DataImporter
 {
     public class ReadFileHandler: IQueryHandler<ReadFileQuery, ReadFileResult>
     {

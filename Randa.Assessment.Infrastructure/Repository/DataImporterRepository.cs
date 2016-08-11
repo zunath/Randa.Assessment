@@ -27,7 +27,7 @@ namespace Randa.Assessment.Infrastructure.Repository
 
         public DataImportEventRow GetDataImportEventRow(string dataSourceId, string keyHash)
         {
-            return AdHocSQLSingle<DataImportEventRow>("SELECT DataSourceId, KeyHash, JSON, DataHash, LastUpdated FROM DataImportEventRow WHERE DataSourceId=@dataSourceId AND KeyHash=@keyHash", 
+            return AdHocSQLSingle<DataImportEventRow>("SELECT DataSourceId, EventId, KeyHash, JSON, DataHash, LastUpdated FROM DataImportEventRow WHERE DataSourceId=@dataSourceId AND KeyHash=@keyHash", 
                 new SqlParameter("dataSourceID", dataSourceId), 
                 new SqlParameter("keyHash", keyHash));
         }
@@ -42,5 +42,9 @@ namespace Randa.Assessment.Infrastructure.Repository
             return SaveEntity(@event, "EventId");
         }
 
+        public int Save(DataImportEventAudit audit)
+        {
+            return SaveEntity(audit, "EventAuditId");
+        }
     }
 }

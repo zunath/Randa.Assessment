@@ -9,8 +9,6 @@ using Randa.Assessment.Domain.Services.Contracts.CQRS;
 using Randa.Assessment.Domain.Services.Contracts.Repository;
 using Randa.Assessment.Domain.Services.Query;
 using Randa.Assessment.Domain.Services.Query.Districts;
-using Randa.Assessment.Domain.Services.Query.Districts.Handler;
-using Randa.Assessment.Domain.Services.Query.Districts.Result;
 using Randa.Assessment.Domain.Validators;
 using Randa.Assessment.Infrastructure.Dispatcher;
 using Randa.Assessment.Infrastructure.Factory;

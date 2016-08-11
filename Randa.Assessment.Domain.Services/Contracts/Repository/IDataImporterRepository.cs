@@ -13,5 +13,6 @@ namespace Randa.Assessment.Domain.Services.Contracts.Repository
 
         int Save(DataImportEventRow row);
         int Save(DataImportEvent @event);
+        int Save(DataImportEventAudit audit);
     }
 }

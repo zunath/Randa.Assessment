@@ -1,8 +1,7 @@
 ﻿using Randa.Assessment.Domain.Services.Contracts.CQRS;
 using Randa.Assessment.Domain.Services.Contracts.Repository;
-using Randa.Assessment.Domain.Services.Query.Districts.Result;
 
-namespace Randa.Assessment.Domain.Services.Query.Districts.Handler
+namespace Randa.Assessment.Domain.Services.Query.Districts
 {
     public class GetActiveDistrictsHandler: IQueryHandler<GetActiveDistrictsQuery, DistrictListQueryResult>
     {

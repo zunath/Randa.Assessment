@@ -75,7 +75,7 @@ namespace Randa.Assessment.Infrastructure.Repository
             return WithConnection(c =>
             {
                 string sql = _sqlHelper.CreateSaveString(entity, columnName, tableName, isIdentity);
-                return c.Execute(sql);
+                return isIdentity ? Convert.ToInt32(c.Query<int>(sql).Single()) : c.Execute(sql);
             });
         }
 
