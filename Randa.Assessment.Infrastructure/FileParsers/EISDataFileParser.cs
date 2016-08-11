@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Randa.Assessment.Domain.DataImporter.DataRecords;
@@ -12,14 +11,13 @@ namespace Randa.Assessment.Infrastructure.FileParsers
     {
         public IEnumerable ParseFile(string filePath)
         {
-            List<EISDataRecord> records = new List<EISDataRecord>();
             string[] lines = File.ReadAllLines(filePath).Skip(1).ToArray();
 
             foreach (string line in lines)
             {
                 string[] data = line.Split('\t');
 
-                EISDataRecord record = new EISDataRecord
+                yield return new EISDataRecord
                 {
                     TestAdminCode = data[0],
                     DistrictID = data[1],
@@ -40,11 +38,7 @@ namespace Randa.Assessment.Infrastructure.FileParsers
                     Gender = data[16],
                     CodeAB = data[17]
                 };
-
-                records.Add(record);
             }
-
-            return records;
         }
     }
 }
