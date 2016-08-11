@@ -27,7 +27,7 @@ namespace Randa.Assessment.Tests
                 Prop2 = "Test"
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.IdField), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.IdField));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.TestClass1 WITH (updlock, serializable) WHERE IdField = 1)" + Environment.NewLine +
@@ -68,7 +68,7 @@ namespace Randa.Assessment.Tests
                 Prop3 = 1.0f
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.TestClass2 WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -108,7 +108,7 @@ namespace Randa.Assessment.Tests
                 Prop = new DateTime(1999, 10, 5, 15, 40, 15)
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.NullableDateTimeClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -140,7 +140,7 @@ namespace Randa.Assessment.Tests
                 Prop = null
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.NullableDateTimeClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -178,7 +178,7 @@ namespace Randa.Assessment.Tests
                 Prop = true
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.BooleanClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -210,7 +210,7 @@ namespace Randa.Assessment.Tests
                 Prop = false
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.BooleanClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -248,7 +248,7 @@ namespace Randa.Assessment.Tests
                 Prop = false
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.NullableBooleanClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -280,7 +280,7 @@ namespace Randa.Assessment.Tests
                 Prop = true
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.NullableBooleanClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -312,7 +312,7 @@ namespace Randa.Assessment.Tests
                 Prop = null
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.NullableBooleanClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -346,7 +346,7 @@ namespace Randa.Assessment.Tests
                 Prop3 = 1.0f
             };
 
-            helper.CreateSaveString(null, testClass);
+            helper.CreateSaveString(testClass, null);
         }
 
         [TestMethod]
@@ -355,7 +355,7 @@ namespace Randa.Assessment.Tests
         {
             var helper = new SQLHelper();
 
-            helper.CreateSaveString("Id", (TestClass2)null);
+            helper.CreateSaveString((TestClass2)null, "Id");
         }
 
         public class DateTimeTestClass
@@ -375,7 +375,7 @@ namespace Randa.Assessment.Tests
                 DateTimeTest = new DateTime(1999, 10, 5, 15, 40, 15)
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.DateTimeTestClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -413,7 +413,7 @@ namespace Randa.Assessment.Tests
                 Prop = "Test"
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.StringTestClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -445,7 +445,7 @@ namespace Randa.Assessment.Tests
                 Prop = null
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.StringTestClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -477,7 +477,7 @@ namespace Randa.Assessment.Tests
                 Prop = "Isn't it so that this string's apostrophes should be escaped?"
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.StringTestClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -515,7 +515,7 @@ namespace Randa.Assessment.Tests
                 Prop = null
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.SqlGeographyTestClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -547,7 +547,7 @@ namespace Randa.Assessment.Tests
                 Prop = SqlGeography.Point(-86.412172, 36.372854, 4326)
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.SqlGeographyTestClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -579,7 +579,7 @@ namespace Randa.Assessment.Tests
                 Prop = new SqlGeography()
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.SqlGeographyTestClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -623,7 +623,7 @@ namespace Randa.Assessment.Tests
                 Prop = TestIntEnum.NumberOne
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.EnumIntClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -666,7 +666,7 @@ namespace Randa.Assessment.Tests
                 Prop = TestByteEnum.NumberOne
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.EnumByteClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +
@@ -709,7 +709,7 @@ namespace Randa.Assessment.Tests
                 Prop = TestBasicEnum.NumberOne
             };
 
-            var result = helper.CreateSaveString(nameof(testClass.Id), testClass);
+            var result = helper.CreateSaveString(testClass, nameof(testClass.Id));
 
             var testString =
                 "IF EXISTS (SELECT * FROM dbo.EnumBasicClass WITH (updlock, serializable) WHERE Id = 2)" + Environment.NewLine +

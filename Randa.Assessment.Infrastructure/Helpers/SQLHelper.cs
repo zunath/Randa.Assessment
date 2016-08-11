@@ -11,37 +11,23 @@ namespace Randa.Assessment.Infrastructure.Helpers
     {
         /// <summary>
         /// This will take an object that is an object of type class and creates a SQL save string.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="idField"></param>
-        /// <param name="entity"></param>
-        /// <returns>A sql save string</returns>
-        public string CreateSaveString<T>(string idField, T entity) where T : class
-        {
-            var tableName = typeof(T).Name;
-            var result = CreateSaveString(tableName, idField, entity);
-            return result;
-        }
-
-        /// <summary>
-        /// This will take an object that is an object of type class and creates a SQL save string.
         /// The property names of the object should match the columns of the table we want to update.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="tableName"></param>
-        /// <param name="idField"></param>
+        /// <param name="columnName"></param>
         /// <param name="entity"></param>
         /// <returns>A sql save string</returns>
-        public string CreateSaveString<T>(string tableName, string idField, T entity) where T : class
+        public string CreateSaveString<T>(T entity, string columnName, string tableName = null) where T : class
         {
             if (tableName == null)
             {
-                throw new ArgumentNullException(nameof(tableName));
+                tableName = typeof(T).Name;
             }
 
-            if (idField == null)
+            if (columnName == null)
             {
-                throw new ArgumentNullException(nameof(idField));
+                throw new ArgumentNullException(nameof(columnName));
             }
 
             if (entity == null)
@@ -50,22 +36,22 @@ namespace Randa.Assessment.Infrastructure.Helpers
             }
 
             var objValueDict = CreatePropertyValueDictionary(entity);
-            var idValue = objValueDict[idField];
+            var idValue = objValueDict[columnName];
 
             var sb = new StringBuilder();
-            sb.AppendLine($"IF EXISTS (SELECT * FROM dbo.{tableName} WITH (updlock, serializable) WHERE {idField} = {idValue})" +
+            sb.AppendLine($"IF EXISTS (SELECT * FROM dbo.{tableName} WITH (updlock, serializable) WHERE {columnName} = {idValue})" +
                             Environment.NewLine + "BEGIN" +
                             Environment.NewLine + $"\tUPDATE dbo.{tableName}" +
                             Environment.NewLine + "\tSET");
 
 
 
-            var stringValues = objValueDict.Where(x => x.Key != idField).Select(x => $"\t\t{x.Key} = {x.Value}{Environment.NewLine}").ToArray();
+            var stringValues = objValueDict.Where(x => x.Key != columnName).Select(x => $"\t\t{x.Key} = {x.Value}{Environment.NewLine}").ToArray();
             var updates = string.Join(", ", stringValues);
 
             sb.Append(updates);
-            sb.AppendLine($"\tOUTPUT INSERTED.{idField}");
-            sb.AppendLine($"\tWHERE {idField} = {idValue}");
+            sb.AppendLine($"\tOUTPUT INSERTED.{columnName}");
+            sb.AppendLine($"\tWHERE {columnName} = {idValue}");
 
             sb.AppendLine("END");
             sb.AppendLine("ELSE");
@@ -73,13 +59,13 @@ namespace Randa.Assessment.Infrastructure.Helpers
 
             sb.Append($"\tINSERT INTO dbo.{tableName} (");
 
-            var fields = objValueDict.Where(x => x.Key != idField).Select(x => $"[{x.Key}]").ToArray();
+            var fields = objValueDict.Where(x => x.Key != columnName).Select(x => $"[{x.Key}]").ToArray();
             var fieldsConcat = string.Join(", ", fields);
 
             sb.AppendLine($"{fieldsConcat})");
-            sb.AppendLine($"\tOUTPUT INSERTED.{idField}");
+            sb.AppendLine($"\tOUTPUT INSERTED.{columnName}");
 
-            var values = objValueDict.Where(x => x.Key != idField).Select(x => $"{x.Value}").ToArray();
+            var values = objValueDict.Where(x => x.Key != columnName).Select(x => $"{x.Value}").ToArray();
             var valuesConcat = string.Join(", ", values);
 
             sb.AppendLine($"\tVALUES ( {valuesConcat} )");
