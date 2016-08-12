@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Randa.Assessment.Domain.DataImporter;
 
-namespace Randa.Assessment.Domain.Services.Contracts.Repository
+namespace Randa.Assessment.Domain.Contracts.Repository
 {
     public interface IDataImporterRepository
     {

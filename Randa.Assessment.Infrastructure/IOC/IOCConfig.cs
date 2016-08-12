@@ -2,12 +2,12 @@
 using Autofac;
 using Randa.Assessment.Application.Services;
 using Randa.Assessment.Application.Services.Contracts;
+using Randa.Assessment.Domain.Contracts.DataImporter;
+using Randa.Assessment.Domain.Contracts.Repository;
+using Randa.Assessment.Domain.Contracts.Security;
 using Randa.Assessment.Domain.DataImporter.DataRecords;
 using Randa.Assessment.Domain.Services.Command.DataImporter;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
-using Randa.Assessment.Domain.Services.Contracts.DataImporter;
-using Randa.Assessment.Domain.Services.Contracts.Repository;
-using Randa.Assessment.Domain.Services.Contracts.Security;
 using Randa.Assessment.Domain.Services.Query.DataImporter;
 using Randa.Assessment.Infrastructure.Dispatcher;
 using Randa.Assessment.Infrastructure.Factory;

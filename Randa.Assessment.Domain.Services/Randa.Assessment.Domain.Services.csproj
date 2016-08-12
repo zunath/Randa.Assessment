@@ -55,17 +55,10 @@
     <Compile Include="Contracts\CQRS\IQueryDispatcher.cs" />
     <Compile Include="Contracts\CQRS\IQueryHandler.cs" />
     <Compile Include="Contracts\CQRS\IQuery.cs" />
-    <Compile Include="Contracts\DataImporter\IDataImportParser.cs" />
-    <Compile Include="Contracts\Security\IHashingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\DataImporter\ReadFileHandler.cs" />
     <Compile Include="Query\DataImporter\ReadFileQuery.cs" />
     <Compile Include="Query\DataImporter\ReadFileResult.cs" />
-    <Compile Include="Query\Districts\GetActiveDistrictsQuery.cs" />
-    <Compile Include="Query\Districts\GetActiveDistrictsHandler.cs" />
-    <Compile Include="Query\Districts\DistrictListQueryResult.cs" />
-    <Compile Include="Contracts\Repository\IDataImporterRepository.cs" />
-    <Compile Include="Contracts\Repository\IDistrictRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Randa.Assessment.Domain\Randa.Assessment.Domain.csproj">

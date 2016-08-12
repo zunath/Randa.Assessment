@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Randa.Assessment.Domain.Services.Contracts.DataImporter
+namespace Randa.Assessment.Domain.Contracts.DataImporter
 {
     public interface IDataImportParser
     {

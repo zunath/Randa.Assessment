@@ -1,11 +1,11 @@
 ﻿using System;
 using Autofac;
 using FluentValidation;
-using IValidatorFactory = Randa.Assessment.Domain.Contracts.IValidatorFactory;
+using IValidatorFactory = Randa.Assessment.Domain.Contracts.Entities.IValidatorFactory;
 
 namespace Randa.Assessment.Infrastructure.Factory
 {
-    public class AutofacValidatorFactory: ValidatorFactoryBase, IValidatorFactory
+    public class AutofacValidatorFactory: ValidatorFactoryBase, Domain.Contracts.Entities.IValidatorFactory
     {
         private readonly IComponentContext _context;
         public AutofacValidatorFactory(IComponentContext context)

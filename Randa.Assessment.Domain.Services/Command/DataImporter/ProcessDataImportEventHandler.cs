@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
+using Randa.Assessment.Domain.Contracts.Repository;
+using Randa.Assessment.Domain.Contracts.Security;
 using Randa.Assessment.Domain.DataImporter;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
-using Randa.Assessment.Domain.Services.Contracts.Repository;
-using Randa.Assessment.Domain.Services.Contracts.Security;
 
 namespace Randa.Assessment.Domain.Services.Command.DataImporter
 {
@@ -26,14 +26,8 @@ namespace Randa.Assessment.Domain.Services.Command.DataImporter
             List<DataImportSourceKey> keys = _repo.GetDataSourceKeys(command.DataSourceId).ToList();
             if (keys.Count <= 0) throw new Exception("No keys configured for this import event type.");
 
-            DataImportEvent @event = new DataImportEvent
-            {
-                DataSourceId = command.DataSourceId,
-                FileName = command.FileName,
-                ImportDate = DateTime.UtcNow
-            };
-
-            int eventId = _repo.Save(@event);
+            DataImportEvent @event = DataImportEvent.Create(command.DataSourceId, command.FileName);
+            @event.EventId = _repo.Save(@event);
             
             foreach (var record in command.Data)
             {
@@ -60,21 +54,12 @@ namespace Randa.Assessment.Domain.Services.Command.DataImporter
                 // Data has changed since last import. Audit and update.
                 if (row.DataHash != dataHash)
                 {
-                    DataImportEventAudit audit = new DataImportEventAudit
-                    {
-                        DataSourceId = row.DataSourceId,
-                        EventId = row.EventId,
-                        DataHash = row.DataHash,
-                        LastUpdated = row.LastUpdated,
-                        JSON = row.JSON,
-                        KeyHash = row.KeyHash
-                    };
-
+                    DataImportEventAudit audit = DataImportEventAudit.Create(row.EventId, row.DataSourceId, row.JSON, row.DataHash, row.KeyHash);
                     _repo.Save(audit);
 
                     row.DataHash = dataHash;
                     row.LastUpdated = DateTime.UtcNow;
-                    row.EventId = eventId;
+                    row.EventId = @event.EventId;
                     row.JSON = json;
 
                     _repo.Save(row);

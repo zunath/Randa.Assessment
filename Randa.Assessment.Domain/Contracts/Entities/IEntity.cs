@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using FluentValidation.Results;
 
-namespace Randa.Assessment.Domain.Contracts
+namespace Randa.Assessment.Domain.Contracts.Entities
 {
     public interface IEntity
     {

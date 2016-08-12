@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Randa.Assessment.Domain.Services.Contracts.Security
+namespace Randa.Assessment.Domain.Contracts.Security
 {
     public interface IHashingService
     {

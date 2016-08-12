@@ -4,16 +4,11 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using FluentValidation;
 using Randa.Assessment.Domain.Entities;
-using Randa.Assessment.Domain.Services.Command;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
-using Randa.Assessment.Domain.Services.Contracts.Repository;
-using Randa.Assessment.Domain.Services.Query;
-using Randa.Assessment.Domain.Services.Query.Districts;
 using Randa.Assessment.Domain.Validators;
 using Randa.Assessment.Infrastructure.Dispatcher;
 using Randa.Assessment.Infrastructure.Factory;
-using Randa.Assessment.Infrastructure.Repository;
-using IValidatorFactory = Randa.Assessment.Domain.Contracts.IValidatorFactory;
+using IValidatorFactory = Randa.Assessment.Domain.Contracts.Entities.IValidatorFactory;
 
 namespace Randa.Assessment.Application
 {
@@ -32,7 +27,7 @@ namespace Randa.Assessment.Application
             // Commands
 
             // Queries
-            builder.RegisterType<GetActiveDistrictsHandler>().As<IQueryHandler<GetActiveDistrictsQuery, DistrictListQueryResult>>();
+            //builder.RegisterType<GetActiveDistrictsHandler>().As<IQueryHandler<GetActiveDistrictsQuery, DistrictListQueryResult>>();
 
             // Validators
             builder.RegisterType<DistrictValidator>()
@@ -40,7 +35,6 @@ namespace Randa.Assessment.Application
                 .As<IValidator>();
 
             // Repositories
-            builder.RegisterType<DistrictRepository>().As<IDistrictRepository>();
 
             
 

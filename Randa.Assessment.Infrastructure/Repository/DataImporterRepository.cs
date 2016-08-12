@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
+using Randa.Assessment.Domain.Contracts.Repository;
 using Randa.Assessment.Domain.DataImporter;
-using Randa.Assessment.Domain.Services.Contracts.Repository;
 using Randa.Assessment.Infrastructure.Helpers.Contracts;
 
 namespace Randa.Assessment.Infrastructure.Repository

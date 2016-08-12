@@ -1,5 +1,5 @@
 ﻿using System;
-using Randa.Assessment.Domain.Services.Contracts.DataImporter;
+using Randa.Assessment.Domain.Contracts.DataImporter;
 
 namespace Randa.Assessment.Domain.Services.Contracts.CQRS
 {

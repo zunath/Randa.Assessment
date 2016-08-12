@@ -2,8 +2,8 @@
 using System.Collections;
 using System.IO;
 using System.Linq;
+using Randa.Assessment.Domain.Contracts.DataImporter;
 using Randa.Assessment.Domain.DataImporter.DataRecords;
-using Randa.Assessment.Domain.Services.Contracts.DataImporter;
 
 namespace Randa.Assessment.Infrastructure.FileParsers
 {

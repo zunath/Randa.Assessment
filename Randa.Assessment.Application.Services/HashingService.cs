@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using Randa.Assessment.Domain.Services.Contracts.Security;
+using Randa.Assessment.Domain.Contracts.Security;
 
 namespace Randa.Assessment.Application.Services
 {
