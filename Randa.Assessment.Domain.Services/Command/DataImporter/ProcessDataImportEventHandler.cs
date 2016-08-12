@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Randa.Assessment.Domain.Contracts.Repository;
 using Randa.Assessment.Domain.Contracts.Security;
@@ -26,10 +27,11 @@ namespace Randa.Assessment.Domain.Services.Command.DataImporter
             List<DataImportSourceKey> keys = _repo.GetDataSourceKeys(command.DataSourceId).ToList();
             if (keys.Count <= 0) throw new Exception("No keys configured for this import event type.");
 
+
             DataImportEvent @event = DataImportEvent.Create(command.DataSourceId, command.FileName);
             @event.EventId = _repo.Save(@event);
-            
-            foreach (var record in command.Data)
+
+            Parallel.ForEach(command.Data.Cast<object>(), (record) =>
             {
                 string combinedKey = string.Empty;
                 string json = JsonConvert.SerializeObject(record);
@@ -64,9 +66,7 @@ namespace Randa.Assessment.Domain.Services.Command.DataImporter
 
                     _repo.Save(row);
                 }
-
-
-            }
+            });
         }
     }
 }

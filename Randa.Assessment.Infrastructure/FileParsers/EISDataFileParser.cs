@@ -20,23 +20,23 @@ namespace Randa.Assessment.Infrastructure.FileParsers
                 yield return new EISDataRecord
                 {
                     TestAdminCode = data[0],
-                    DistrictID = data[1],
-                    SchoolID = data[2],
-                    Grade = data[3],
-                    LastName = data[4],
-                    FirstName = data[5],
-                    MiddleInitial = data[6],
-                    USID = data[7],
-                    DateOfBirth = data[8],
-                    EthnicOrigin = data[9],
-                    IsRaceIndian = Convert.ToBoolean(Convert.ToInt16(data[10])),
-                    IsRaceAsian = Convert.ToBoolean(Convert.ToInt16(data[11])),
-                    IsRaceBlack = Convert.ToBoolean(Convert.ToInt16(data[12])),
-                    IsRacePacificIslander = Convert.ToBoolean(Convert.ToInt16(data[13])),
-                    IsRaceWhite = Convert.ToBoolean(Convert.ToInt16(data[14])),
-                    IsRaceUnspecified = Convert.ToBoolean(Convert.ToInt16(data[15])),
-                    Gender = data[16],
-                    CodeAB = data[17]
+                    DistrictID = data[2],
+                    SchoolID = data[3],
+                    Grade = data[4],
+                    LastName = data[5],
+                    FirstName = data[6],
+                    MiddleInitial = data[7],
+                    USID = data[8],
+                    DateOfBirth = data[9],
+                    EthnicOrigin = data[10],
+                    IsRaceIndian = data[11] != string.Empty && Convert.ToBoolean(Convert.ToInt16(data[11])),
+                    IsRaceAsian = data[12] != string.Empty && Convert.ToBoolean(Convert.ToInt16(data[12])),
+                    IsRaceBlack = data[13] != string.Empty && Convert.ToBoolean(Convert.ToInt16(data[13])),
+                    IsRacePacificIslander = data[14] != string.Empty && Convert.ToBoolean(Convert.ToInt16(data[14])),
+                    IsRaceWhite = data[15] != string.Empty && Convert.ToBoolean(Convert.ToInt16(data[15])),
+                    IsRaceUnspecified = data[16] != string.Empty && Convert.ToBoolean(Convert.ToInt16(data[16])),
+                    Gender = data[17],
+                    CodeAB = data[18]
                 };
             }
         }
