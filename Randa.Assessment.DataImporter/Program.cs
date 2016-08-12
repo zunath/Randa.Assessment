@@ -8,7 +8,7 @@ namespace Randa.Assessment.DataImporter
     {
         static void Main(string[] args)
         {
-            var container = IOCConfig.Initialize(typeof(App), ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
+            var container = IOCConfig.Initialize(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString(), typeof(App));
 
             using (var scope = container.BeginLifetimeScope())
             {
