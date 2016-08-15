@@ -1,6 +1,6 @@
 ﻿namespace Randa.Assessment.Domain.DataImporter.DataRecords
 {
-    public class EISDataRecord
+    public class EISDataRecord: BaseDataRecord
     {
         public string TestAdminCode { get; set; }
         public string DistrictID { get; set; }
@@ -22,5 +22,12 @@
         public string CodeAB { get; set; }
 
         // TODO: Add more fields
+
+
+        public override string GetKeyHash()
+        {
+            return GetHash(TestAdminCode, DistrictID, SchoolID, USID);
+        }
+        
     }
 }

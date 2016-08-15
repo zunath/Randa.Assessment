@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Dynamic;
 using FluentValidation.Results;
 using Newtonsoft.Json;
-using Randa.Assessment.Domain.Contracts;
 using Randa.Assessment.Domain.Contracts.Entities;
 
 namespace Randa.Assessment.Domain.Entities

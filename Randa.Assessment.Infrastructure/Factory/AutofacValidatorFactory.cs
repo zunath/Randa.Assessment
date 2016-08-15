@@ -1,7 +1,6 @@
 ﻿using System;
 using Autofac;
 using FluentValidation;
-using IValidatorFactory = Randa.Assessment.Domain.Contracts.Entities.IValidatorFactory;
 
 namespace Randa.Assessment.Infrastructure.Factory
 {

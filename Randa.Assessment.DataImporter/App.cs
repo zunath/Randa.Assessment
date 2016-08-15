@@ -17,7 +17,7 @@ namespace Randa.Assessment.DataImporter
             string sourceId = args[0];
             string filePath = args[1];
 
-            _service.ImportDataFile(sourceId, filePath, typeof(EISDataRecord));
+            _service.ImportDataFile<EISDataRecord>(sourceId, filePath);
         }
     }
 }

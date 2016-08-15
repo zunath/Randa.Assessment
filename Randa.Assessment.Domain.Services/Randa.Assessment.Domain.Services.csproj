@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="Command\DataImporter\ProcessDataImportEventCommand.cs" />
     <Compile Include="Command\DataImporter\ProcessDataImportEventHandler.cs" />
+    <Compile Include="Command\DataProcessor\ProcessDataCommand.cs" />
+    <Compile Include="Command\DataProcessor\ProcessDataHandler.cs" />
     <Compile Include="Contracts\CQRS\IDataParserFactory.cs" />
     <Compile Include="Contracts\CQRS\IQueryResult.cs" />
     <Compile Include="Contracts\CQRS\ICommand.cs" />

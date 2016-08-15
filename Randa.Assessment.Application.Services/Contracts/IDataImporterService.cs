@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Randa.Assessment.Domain.Contracts.DataImporter;
 
 namespace Randa.Assessment.Application.Services.Contracts
 {
     public interface IDataImporterService
     {
-        void ImportDataFile(string dataSourceId, string filePath, Type type);
+        void ImportDataFile<T>(string dataSourceId, string filePath)
+            where T: IDataRecord;
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using FluentValidation.Results;
-using Randa.Assessment.Domain.Contracts;
 using Randa.Assessment.Domain.Contracts.Entities;
 using Randa.Assessment.Domain.Entities;
 

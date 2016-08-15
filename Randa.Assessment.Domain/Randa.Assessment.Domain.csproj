@@ -50,17 +50,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\DataImporter\IDataImportParser.cs" />
+    <Compile Include="Contracts\DataProcessor\IDataProcessor.cs" />
+    <Compile Include="Contracts\DataImporter\IDataRecord.cs" />
     <Compile Include="Contracts\Entities\IDeletable.cs" />
     <Compile Include="Contracts\Entities\IEntity.cs" />
     <Compile Include="Contracts\Entities\IValidatorFactory.cs" />
     <Compile Include="Contracts\Repository\IDataImporterRepository.cs" />
-    <Compile Include="Contracts\Security\IHashingService.cs" />
     <Compile Include="DataImporter\DataImportEvent.cs" />
     <Compile Include="DataImporter\DataImportEventAudit.cs" />
     <Compile Include="DataImporter\DataImportEventRow.cs" />
     <Compile Include="DataImporter\DataImportSourceType.cs" />
-    <Compile Include="DataImporter\Enums\DataImportParserType.cs" />
-    <Compile Include="DataImporter\DataImportSourceKey.cs" />
+    <Compile Include="DataImporter\DataRecords\BaseDataRecord.cs" />
     <Compile Include="DataImporter\DataRecords\EISDataRecord.cs" />
     <Compile Include="Entities\AcademicYear.cs" />
     <Compile Include="Entities\Address.cs" />
@@ -76,6 +76,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DataProcessor\EIS\" />
     <Folder Include="Factories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

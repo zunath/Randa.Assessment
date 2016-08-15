@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using Autofac;
 using Autofac.Integration.Mvc;
@@ -7,10 +8,8 @@ using Randa.Assessment.Application.Services;
 using Randa.Assessment.Application.Services.Contracts;
 using Randa.Assessment.Domain.Contracts.DataImporter;
 using Randa.Assessment.Domain.Contracts.Repository;
-using Randa.Assessment.Domain.Contracts.Security;
 using Randa.Assessment.Domain.DataImporter.DataRecords;
 using Randa.Assessment.Domain.Entities;
-using Randa.Assessment.Domain.Services.Command.DataImporter;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
 using Randa.Assessment.Domain.Services.Query.DataImporter;
 using Randa.Assessment.Domain.Validators;
@@ -35,6 +34,7 @@ namespace Randa.Assessment.Infrastructure.IOC
                 builder.RegisterType(rootType).As(rootType.GetInterfaces()[0]);
             }
             
+            // CQRS Dispatchers
             builder.RegisterType<CommandDispatcher>().As<ICommandDispatcher>();
             builder.RegisterType<QueryDispatcher>().As<IQueryDispatcher>();
 
@@ -46,7 +46,7 @@ namespace Randa.Assessment.Infrastructure.IOC
             builder.RegisterType<AutofacValidatorFactory>().As<IValidatorFactory>();
 
             // Commands
-            builder.RegisterType<ProcessDataImportEventHandler>().As<ICommandHandler<ProcessDataImportEventCommand>>();
+            RegisterCommands(builder);
 
             // Queries
             builder.RegisterType<ReadFileHandler>().As<IQueryHandler<ReadFileQuery, ReadFileResult>>();
@@ -56,7 +56,6 @@ namespace Randa.Assessment.Infrastructure.IOC
 
             // Services
             builder.RegisterType<DataImporterService>().As<IDataImporterService>();
-            builder.RegisterType<HashingService>().As<IHashingService>();
 
             // Repositories
             builder.RegisterType<DataImporterRepository>().As<IDataImporterRepository>()
@@ -72,6 +71,42 @@ namespace Randa.Assessment.Infrastructure.IOC
 
             return builder.Build();
         }
+
+        private static void RegisterCommands(ContainerBuilder builder)
+        {
+            var handlerClasses = AppDomain.CurrentDomain.GetAssemblies()
+                       .SelectMany(x => x.GetTypes())
+                       .Where(type => DoesTypeSupportInterface(type, typeof(ICommandHandler<>)) && type.IsClass).ToList();
+
+            var commandClasses = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => typeof(ICommand).IsAssignableFrom(p) && p.IsClass);
+
+            foreach (var command in commandClasses)
+            {
+                foreach (var handler in handlerClasses)
+                {
+                    var interfaces = handler.GetInterfaces();
+                    if (interfaces.Length > 0)
+                    {
+                        var @interface = interfaces[0];
+                        var argumentType = @interface.GenericTypeArguments[0];
+                        if (argumentType == command)
+                        {
+                            builder.RegisterType(handler).As(@interface);
+                        }
+                    }
+                }
+            }
+        }
         
+        private static bool DoesTypeSupportInterface(Type type, Type inter)
+        {
+            if (inter.IsAssignableFrom(type))
+                return true;
+            if (type.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == inter))
+                return true;
+            return false;
+        }
     }
 }

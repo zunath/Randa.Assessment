@@ -8,12 +8,16 @@ namespace Randa.Assessment.Domain.Services.Command.DataImporter
         public string DataSourceId { get; private set; }
         public string FileName { get; private set; }
         public IEnumerable Data { get; private set; }
-
-        public ProcessDataImportEventCommand(string dataSourceId, string fileName, IEnumerable data)
+        
+        public static ProcessDataImportEventCommand Create(string dataSourceId, string fileName, IEnumerable data)
         {
-            DataSourceId = dataSourceId;
-            FileName = fileName;
-            Data = data;
+            return new ProcessDataImportEventCommand
+            {
+                DataSourceId = dataSourceId,
+                FileName = fileName,
+                Data = data
+            };
         }
+
     }
 }

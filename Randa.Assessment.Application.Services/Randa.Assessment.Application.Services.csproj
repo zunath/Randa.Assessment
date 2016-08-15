@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Contracts\IDataImporterService.cs" />
     <Compile Include="DataImporterService.cs" />
-    <Compile Include="HashingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
