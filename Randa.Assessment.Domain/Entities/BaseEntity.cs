@@ -60,6 +60,10 @@ namespace Randa.Assessment.Domain.Entities
             IsDeleted = true;
         }
 
+        public bool IsValid()
+        {
+            return _validatorFactory.GetValidator(GetType()).Validate(this).IsValid;
+        }
         public bool IsValid(out IList<ValidationFailure> errors)
         {
             var result = _validatorFactory.GetValidator(GetType()).Validate(this);

@@ -32,7 +32,7 @@ namespace Randa.Assessment.Domain.Tests.DataImporter
         }
 
         [TestMethod]
-        public void KeyHashShouldMatch()
+        public void EISDataRecord_GetKeyHash_ShouldMatch()
         {
             EISDataRecord record = BuildRecord();
             string hash = record.GetKeyHash();
@@ -41,7 +41,7 @@ namespace Randa.Assessment.Domain.Tests.DataImporter
         }
 
         [TestMethod]
-        public void KeyHashShouldNotMatch()
+        public void EISDataRecord_GetKeyHash_ShouldNotMatch()
         {
             EISDataRecord record = BuildRecord();
             record.USID = "999999999";
@@ -51,7 +51,7 @@ namespace Randa.Assessment.Domain.Tests.DataImporter
         }
 
         [TestMethod]
-        public void DataHashShouldMatch()
+        public void EISDataRecord_GetDataHash_ShouldMatch()
         {
             EISDataRecord record = BuildRecord();
             string hash = record.GetDataHash();
@@ -60,7 +60,7 @@ namespace Randa.Assessment.Domain.Tests.DataImporter
         }
 
         [TestMethod]
-        public void DataHashShouldNotMatch()
+        public void EISDataRecord_GetDataHash_ShouldNotMatch()
         {
             EISDataRecord record = BuildRecord();
             record.FirstName = "NewFirstName";
@@ -70,7 +70,7 @@ namespace Randa.Assessment.Domain.Tests.DataImporter
         }
 
         [TestMethod]
-        public void JSONShouldMatch()
+        public void EISDataRecord_GetJSON_ShouldMatch()
         {
             EISDataRecord record = BuildRecord();
             string json = record.GetJSON();
@@ -79,7 +79,7 @@ namespace Randa.Assessment.Domain.Tests.DataImporter
         }
 
         [TestMethod]
-        public void JSONShouldNotMatch()
+        public void EISDataRecord_GetJSON_ShouldNotMatch()
         {
             EISDataRecord record = BuildRecord();
             record.LastName = "ChangedLastName";
