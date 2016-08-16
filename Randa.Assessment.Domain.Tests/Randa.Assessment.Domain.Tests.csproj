@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F2D1DA2F-0A0D-4B37-83E3-5A455F890F8E}</ProjectGuid>
+    <ProjectGuid>{78F2C7CE-B111-4AF4-89FE-9F0EDCA74B33}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Randa.Assessment.Tests</RootNamespace>
-    <AssemblyName>Randa.Assessment.Tests</AssemblyName>
+    <RootNamespace>Randa.Assessment.Domain.Tests</RootNamespace>
+    <AssemblyName>Randa.Assessment.Domain.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,19 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.11.0.2\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -63,14 +51,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataImporter\EISDataRecordTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SQLHelperTests.cs" />
-    <Compile Include="SqlServerTypes\Loader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Randa.Assessment.Application.Services\Randa.Assessment.Application.Services.csproj">
       <Project>{1d616481-80f7-46ba-8e89-2e0ec2c341b5}</Project>
       <Name>Randa.Assessment.Application.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Randa.Assessment.Application\Randa.Assessment.Application.csproj">
+      <Project>{4ec2d5b5-c7b3-4adb-bc3d-2f64dcba166c}</Project>
+      <Name>Randa.Assessment.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Randa.Assessment.DataImporter\Randa.Assessment.DataImporter.csproj">
+      <Project>{d346b2b5-ab02-4c62-8266-48900b325b07}</Project>
+      <Name>Randa.Assessment.DataImporter</Name>
     </ProjectReference>
     <ProjectReference Include="..\Randa.Assessment.Domain.Services\Randa.Assessment.Domain.Services.csproj">
       <Project>{08addf59-5661-49e0-b394-78156aaad1b7}</Project>
@@ -84,19 +79,6 @@
       <Project>{19de2c11-dbc0-4ab1-a42f-debc221fad0d}</Project>
       <Name>Randa.Assessment.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Randa.Assessment.Application\Randa.Assessment.Application.csproj">
-      <Project>{4ec2d5b5-c7b3-4adb-bc3d-2f64dcba166c}</Project>
-      <Name>Randa.Assessment.Application</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SqlServerTypes\readme.htm" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
