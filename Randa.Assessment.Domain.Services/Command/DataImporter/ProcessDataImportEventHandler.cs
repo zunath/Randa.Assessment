@@ -45,6 +45,7 @@ namespace Randa.Assessment.Domain.Services.Command.DataImporter
                     row.LastUpdated = DateTime.UtcNow;
                     row.EventId = @event.EventId;
                     row.JSON = json;
+                    row.ProcessedDate = null;
 
                     _repo.Save(row);
                 }

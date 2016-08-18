@@ -4,7 +4,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Randa.Assessment.Domain.Contracts.DataImporter;
 
-namespace Randa.Assessment.Domain.DataImporter.DataRecords
+namespace Randa.Assessment.Domain.DataRecord
 {
     public abstract class BaseDataRecord: IDataRecord
     {

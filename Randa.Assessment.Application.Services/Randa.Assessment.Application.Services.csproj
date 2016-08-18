@@ -46,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IDataImporterService.cs" />
-    <Compile Include="DataImporterService.cs" />
+    <Compile Include="Contracts\IDataProcessorService.cs" />
+    <Compile Include="DataProcessing\DataImporterService.cs" />
+    <Compile Include="DataProcessing\DataProcessorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

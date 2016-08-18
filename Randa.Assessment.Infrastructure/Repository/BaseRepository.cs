@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Dynamic;
 using System.Linq;
 using Dapper;
-using Randa.Assessment.Infrastructure.Helpers.Contracts;
+using Randa.Assessment.Infrastructure.Helper.Contracts;
 
 namespace Randa.Assessment.Infrastructure.Repository
 {

@@ -1,6 +1,6 @@
 ﻿using Randa.Assessment.Domain.Contracts.Entities;
 
-namespace Randa.Assessment.Domain.Entities
+namespace Randa.Assessment.Domain.Entity
 {
     public class District: BaseEntity
     {

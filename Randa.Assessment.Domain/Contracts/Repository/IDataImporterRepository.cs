@@ -1,4 +1,5 @@
-﻿using Randa.Assessment.Domain.DataImporter;
+﻿using System.Collections.Generic;
+using Randa.Assessment.Domain.DataImporter;
 
 namespace Randa.Assessment.Domain.Contracts.Repository
 {
@@ -6,6 +7,7 @@ namespace Randa.Assessment.Domain.Contracts.Repository
     {
         DataImportSourceType GetDataSourceType(string dataSourceId);
         DataImportEventRow GetDataImportEventRow(string dataSourceId, string keyHash);
+        IEnumerable<DataImportEventRow> GetUnprocessedEventRows(string dataSourceId);
 
 
         int Save(DataImportEventRow row);

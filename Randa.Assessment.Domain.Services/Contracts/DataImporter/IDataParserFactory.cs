@@ -1,7 +1,7 @@
 ﻿using System;
 using Randa.Assessment.Domain.Contracts.DataImporter;
 
-namespace Randa.Assessment.Domain.Services.Contracts.CQRS
+namespace Randa.Assessment.Domain.Services.Contracts.DataImporter
 {
     public interface IDataParserFactory
     {

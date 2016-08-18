@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.SqlServer.Types;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Randa.Assessment.Infrastructure.Helpers;
+using Randa.Assessment.Infrastructure.Helper;
 
 namespace Randa.Assessment.Tests
 {

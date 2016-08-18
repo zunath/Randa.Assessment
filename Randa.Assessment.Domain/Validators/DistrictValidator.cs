@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Randa.Assessment.Domain.Entities;
+using Randa.Assessment.Domain.Entity;
 
 namespace Randa.Assessment.Domain.Validators
 {

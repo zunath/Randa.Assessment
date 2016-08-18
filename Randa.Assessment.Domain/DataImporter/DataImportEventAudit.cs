@@ -11,6 +11,7 @@ namespace Randa.Assessment.Domain.DataImporter
         public string DataHash { get; private set; }
         public string KeyHash { get; private set; }
         public DateTime LastUpdated { get; private set; }
+        public DateTime? ProcessedDate { get; private set; }
 
         public static DataImportEventAudit Create(
             int eventId,
@@ -26,7 +27,8 @@ namespace Randa.Assessment.Domain.DataImporter
                 DataHash = dataHash,
                 LastUpdated = DateTime.UtcNow,
                 KeyHash = keyHash,
-                JSON = json
+                JSON = json,
+                ProcessedDate = null
             };
         }
     }

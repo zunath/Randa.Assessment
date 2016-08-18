@@ -1,9 +1,8 @@
-﻿using Randa.Assessment.Domain.Contracts.Entities;
+﻿using System;
+using Randa.Assessment.Domain.Contracts.Entities;
 
-namespace Randa.Assessment.Domain.Entities
+namespace Randa.Assessment.Domain.Entity
 {
-    using System;
-    
     public class AcademicYear: BaseEntity
     {
         public int AcademicYearId { get; set; }

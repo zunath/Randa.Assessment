@@ -1,15 +1,18 @@
 ﻿using Randa.Assessment.Application.Services.Contracts;
-using Randa.Assessment.Domain.DataImporter.DataRecords;
+using Randa.Assessment.Domain.DataRecord;
 
 namespace Randa.Assessment.DataImporter
 {
     public class App: IApplication
     {
-        private readonly IDataImporterService _service;
+        private readonly IDataImporterService _dataImporterService;
+        private readonly IDataProcessorService _dataProcessorService;
 
-        public App(IDataImporterService service)
+        public App(IDataImporterService dataImporterService,
+            IDataProcessorService dataProcessorService)
         {
-            _service = service;
+            _dataImporterService = dataImporterService;
+            _dataProcessorService = dataProcessorService;
         }
 
         public void Run(string[] args)
@@ -17,7 +20,8 @@ namespace Randa.Assessment.DataImporter
             string sourceId = args[0];
             string filePath = args[1];
 
-            _service.ImportDataFile<EISDataRecord>(sourceId, filePath);
+            _dataImporterService.ImportDataFile<EISDataRecord>(sourceId, filePath);
+            _dataProcessorService.ProcessData<EISDataRecord>(sourceId);
         }
     }
 }

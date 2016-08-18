@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.SqlServer.Types;
-using Randa.Assessment.Infrastructure.Helpers.Contracts;
+using Randa.Assessment.Infrastructure.Helper.Contracts;
 
-namespace Randa.Assessment.Infrastructure.Helpers
+namespace Randa.Assessment.Infrastructure.Helper
 {
     public class SQLHelper: ISQLHelper
     {

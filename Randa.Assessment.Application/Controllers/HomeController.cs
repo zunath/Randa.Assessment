@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using FluentValidation.Results;
 using Randa.Assessment.Domain.Contracts.Entities;
-using Randa.Assessment.Domain.Entities;
+using Randa.Assessment.Domain.Entity;
 
 namespace Randa.Assessment.Application.Controllers
 {

@@ -1,7 +1,8 @@
 ﻿using System.Data.SqlClient;
 using Randa.Assessment.Domain.Contracts.Repository;
 using Randa.Assessment.Domain.DataImporter;
-using Randa.Assessment.Infrastructure.Helpers.Contracts;
+using System.Collections.Generic;
+using Randa.Assessment.Infrastructure.Helper.Contracts;
 
 namespace Randa.Assessment.Infrastructure.Repository
 {
@@ -21,8 +22,14 @@ namespace Randa.Assessment.Infrastructure.Repository
         public DataImportEventRow GetDataImportEventRow(string dataSourceId, string keyHash)
         {
             return AdHocSQLSingle<DataImportEventRow>("SELECT DataSourceId, EventId, KeyHash, JSON, DataHash, LastUpdated FROM DataImportEventRow WHERE DataSourceId=@dataSourceId AND KeyHash=@keyHash", 
-                new SqlParameter("dataSourceID", dataSourceId), 
+                new SqlParameter("dataSourceId", dataSourceId), 
                 new SqlParameter("keyHash", keyHash));
+        }
+
+        public IEnumerable<DataImportEventRow> GetUnprocessedEventRows(string dataSourceId)
+        {
+            return AdHocSQLMany<DataImportEventRow>("SELECT DataSourceId, EventId, KeyHash, JSON, DataHash, LastUpdated FROM DataImportEventRow WHERE DataSourceId=@dataSourceId",
+                new SqlParameter("dataSourceId", dataSourceId));
         }
 
         public int Save(DataImportEventRow row)

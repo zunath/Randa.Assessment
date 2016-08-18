@@ -47,9 +47,9 @@
   <ItemGroup>
     <Compile Include="Command\DataImporter\ProcessDataImportEventCommand.cs" />
     <Compile Include="Command\DataImporter\ProcessDataImportEventHandler.cs" />
-    <Compile Include="Command\DataProcessor\ProcessDataCommand.cs" />
-    <Compile Include="Command\DataProcessor\ProcessDataHandler.cs" />
-    <Compile Include="Contracts\CQRS\IDataParserFactory.cs" />
+    <Compile Include="Command\DataProcessor\ProcessDataRowCommand.cs" />
+    <Compile Include="Command\DataProcessor\ProcessDataRowHandler.cs" />
+    <Compile Include="Contracts\DataImporter\IDataParserFactory.cs" />
     <Compile Include="Contracts\CQRS\IQueryResult.cs" />
     <Compile Include="Contracts\CQRS\ICommand.cs" />
     <Compile Include="Contracts\CQRS\ICommandDispatcher.cs" />
@@ -61,6 +61,9 @@
     <Compile Include="Query\DataImporter\ReadFileHandler.cs" />
     <Compile Include="Query\DataImporter\ReadFileQuery.cs" />
     <Compile Include="Query\DataImporter\ReadFileResult.cs" />
+    <Compile Include="Query\DataProcessor\GetUnprocessedRecordsHandler.cs" />
+    <Compile Include="Query\DataProcessor\GetUnprocessedRecordsQuery.cs" />
+    <Compile Include="Query\DataProcessor\GetUnprocessedRecordsResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Randa.Assessment.Domain\Randa.Assessment.Domain.csproj">

@@ -5,7 +5,7 @@ using FluentValidation.Results;
 using Newtonsoft.Json;
 using Randa.Assessment.Domain.Contracts.Entities;
 
-namespace Randa.Assessment.Domain.Entities
+namespace Randa.Assessment.Domain.Entity
 {
     /// <summary>
     /// This abstract class is intended to be the base for all the core

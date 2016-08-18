@@ -1,4 +1,4 @@
-﻿namespace Randa.Assessment.Infrastructure.Helpers.Contracts
+﻿namespace Randa.Assessment.Infrastructure.Helper.Contracts
 {
     public interface ISQLHelper
     {

@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Randa.Assessment.Domain.Contracts.Entities;
-using Randa.Assessment.Domain.Entities;
+using Randa.Assessment.Domain.Entity;
 using Randa.Assessment.Domain.Validators;
 
 namespace Randa.Assessment.Domain.Tests.Entities

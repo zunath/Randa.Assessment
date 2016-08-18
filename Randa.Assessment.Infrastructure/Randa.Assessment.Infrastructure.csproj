@@ -94,9 +94,10 @@
     <Compile Include="Dispatcher\QueryDispatcher.cs" />
     <Compile Include="Factory\AutofacValidatorFactory.cs" />
     <Compile Include="Factory\DataParserFactory.cs" />
-    <Compile Include="FileParsers\EISDataFileParser.cs" />
-    <Compile Include="Helpers\Contracts\ISQLHelper.cs" />
-    <Compile Include="Helpers\SQLHelper.cs" />
+    <Compile Include="Factory\DataRecordProcessorFactory.cs" />
+    <Compile Include="FileParser\EISDataFileParser.cs" />
+    <Compile Include="Helper\Contracts\ISQLHelper.cs" />
+    <Compile Include="Helper\SQLHelper.cs" />
     <Compile Include="IOC\IOCConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseRepository.cs" />

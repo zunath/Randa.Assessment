@@ -5,7 +5,7 @@ using Randa.Assessment.Domain.Services.Command.DataImporter;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
 using Randa.Assessment.Domain.Services.Query.DataImporter;
 
-namespace Randa.Assessment.Application.Services
+namespace Randa.Assessment.Application.Services.DataProcessing
 {
     public class DataImporterService: IDataImporterService
     {

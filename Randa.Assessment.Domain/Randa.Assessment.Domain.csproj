@@ -50,8 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\DataImporter\IDataImportParser.cs" />
-    <Compile Include="Contracts\DataProcessor\IDataProcessor.cs" />
+    <Compile Include="Contracts\DataProcessor\IDataRecordProcessor.cs" />
     <Compile Include="Contracts\DataImporter\IDataRecord.cs" />
+    <Compile Include="Contracts\DataProcessor\IDataRecordProcessorFactory.cs" />
     <Compile Include="Contracts\Entities\IDeletable.cs" />
     <Compile Include="Contracts\Entities\IEntity.cs" />
     <Compile Include="Contracts\Entities\IValidatorFactory.cs" />
@@ -60,13 +61,14 @@
     <Compile Include="DataImporter\DataImportEventAudit.cs" />
     <Compile Include="DataImporter\DataImportEventRow.cs" />
     <Compile Include="DataImporter\DataImportSourceType.cs" />
-    <Compile Include="DataImporter\DataRecords\BaseDataRecord.cs" />
-    <Compile Include="DataImporter\DataRecords\EISDataRecord.cs" />
-    <Compile Include="Entities\AcademicYear.cs" />
-    <Compile Include="Entities\Address.cs" />
-    <Compile Include="Entities\BaseEntity.cs" />
-    <Compile Include="Entities\Calendar.cs" />
-    <Compile Include="Entities\District.cs" />
+    <Compile Include="DataRecord\BaseDataRecord.cs" />
+    <Compile Include="DataRecord\EISDataRecord.cs" />
+    <Compile Include="DataProcessor\EISRecordProcessor.cs" />
+    <Compile Include="Entity\AcademicYear.cs" />
+    <Compile Include="Entity\Address.cs" />
+    <Compile Include="Entity\BaseEntity.cs" />
+    <Compile Include="Entity\Calendar.cs" />
+    <Compile Include="Entity\District.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\AcademicYearValidator.cs" />
     <Compile Include="Validators\AddressValidator.cs" />
@@ -75,10 +77,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataProcessor\EIS\" />
-    <Folder Include="Factories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
