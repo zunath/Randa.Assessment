@@ -49,6 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\CodeAB.cs" />
+    <Compile Include="Constants\Ethnicity.cs" />
+    <Compile Include="Constants\Gender.cs" />
+    <Compile Include="Constants\Grade.cs" />
     <Compile Include="Contracts\DataImporter\IDataImportParser.cs" />
     <Compile Include="Contracts\DataProcessor\IDataRecordProcessor.cs" />
     <Compile Include="Contracts\DataImporter\IDataRecord.cs" />

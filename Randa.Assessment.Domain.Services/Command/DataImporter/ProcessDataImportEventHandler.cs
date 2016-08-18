@@ -38,8 +38,11 @@ namespace Randa.Assessment.Domain.Services.Command.DataImporter
                 // Data has changed since last import. Audit and update.
                 if (row.DataHash != dataHash)
                 {
-                    DataImportEventAudit audit = DataImportEventAudit.Create(row.EventId, row.DataSourceId, row.JSON, row.DataHash, row.KeyHash);
-                    _repo.Save(audit);
+                    if (!string.IsNullOrWhiteSpace(row.DataHash))
+                    {
+                        DataImportEventAudit audit = DataImportEventAudit.Create(row.EventId, row.DataSourceId, row.JSON, row.DataHash, row.KeyHash);
+                        _repo.Save(audit);
+                    }
 
                     row.DataHash = dataHash;
                     row.LastUpdated = DateTime.UtcNow;

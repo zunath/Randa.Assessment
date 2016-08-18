@@ -19,9 +19,10 @@ namespace Randa.Assessment.Domain.DataProcessor
             EISDataRecord record = JsonConvert.DeserializeObject<EISDataRecord>(row.JSON);
             record.CleanDistrictId();
             record.CleanSchoolId();
+            record.CleanUSID();
             record.CleanFirstName();
             record.CleanLastName();
-            record.CleanUSID();
+            record.CleanMiddleInitial();
         }
     }
 }

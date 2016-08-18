@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Randa.Assessment.Domain.Constants;
 using Randa.Assessment.Domain.DataRecord;
 
 namespace Randa.Assessment.Domain.Tests.DataRecord
@@ -8,6 +10,8 @@ namespace Randa.Assessment.Domain.Tests.DataRecord
     [TestClass]
     public class EISDataRecordTests
     {
+        private const string InvalidCharacters = "!@#$%^&*()-_=+/?;:'\"~`.>,< }{][|\\1234567890";
+
         private EISDataRecord BuildRecord()
         {
             return new EISDataRecord
@@ -17,18 +21,18 @@ namespace Randa.Assessment.Domain.Tests.DataRecord
                 LastName = "Last Name",
                 SchoolId = "6666",
                 TestAdminCode = "2015-2016",
-                Grade = "8",
-                CodeAB = "A",
+                Grade = Grade.Eighth,
+                CodeAB = CodeAB.A,
                 DateOfBirth = new DateTime(1990, 1, 5),
-                EthnicOrigin = "H",
-                Gender = "M",
+                EthnicOrigin = Ethnicity.Hispanic,
+                Gender = Gender.Male,
                 IsRaceAsian = true,
                 IsRaceBlack = true,
                 IsRaceIndian = true,
                 IsRacePacificIslander = true,
                 IsRaceUnspecified = false,
                 IsRaceWhite = true,
-                MiddleInitial = "M",
+                MiddleInitial = 'M',
                 USID = "000000000"
             };
         }
@@ -58,7 +62,7 @@ namespace Randa.Assessment.Domain.Tests.DataRecord
             EISDataRecord record = BuildRecord();
             string hash = record.GetDataHash();
 
-            Assert.AreEqual(hash, "9029b5469a929a35defec9d2b607855c8aad8c5fd8f900eb95e91499de7ec06f");
+            Assert.AreEqual(hash, "fbdc0f85f38f1d8a0b922db613e08d8e0613befb7b25b1bd4f4c43e1e0f3bb76");
         }
 
         [TestMethod]
@@ -77,7 +81,7 @@ namespace Randa.Assessment.Domain.Tests.DataRecord
             EISDataRecord record = BuildRecord();
             string json = record.GetJSON();
 
-            Assert.AreEqual(json, "{\"TestAdminCode\":\"2015-2016\",\"DistrictId\":\"66666\",\"SchoolId\":\"6666\",\"Grade\":\"8\",\"LastName\":\"Last Name\",\"FirstName\":\"First Name\",\"MiddleInitial\":\"M\",\"USID\":\"000000000\",\"DateOfBirth\":\"1990-01-05T00:00:00\",\"EthnicOrigin\":\"H\",\"IsRaceIndian\":true,\"IsRaceAsian\":true,\"IsRaceBlack\":true,\"IsRacePacificIslander\":true,\"IsRaceWhite\":true,\"IsRaceUnspecified\":false,\"Gender\":\"M\",\"CodeAB\":\"A\"}");
+            Assert.AreEqual(json, "{\"TestAdminCode\":\"2015-2016\",\"DistrictId\":\"66666\",\"SchoolId\":\"6666\",\"Grade\":8,\"LastName\":\"Last Name\",\"FirstName\":\"First Name\",\"MiddleInitial\":\"M\",\"USID\":\"000000000\",\"DateOfBirth\":\"1990-01-05T00:00:00\",\"EthnicOrigin\":2,\"IsRaceIndian\":true,\"IsRaceAsian\":true,\"IsRaceBlack\":true,\"IsRacePacificIslander\":true,\"IsRaceWhite\":true,\"IsRaceUnspecified\":false,\"Gender\":1,\"CodeAB\":1}");
         }
 
         [TestMethod]
@@ -121,10 +125,20 @@ namespace Randa.Assessment.Domain.Tests.DataRecord
         }
 
         [TestMethod]
+        public void EISDataRecord_CleanUSID_ShouldBeNumericOnly()
+        {
+            EISDataRecord record = BuildRecord();
+            record.USID = InvalidCharacters;
+            record.CleanUSID();
+
+            Assert.AreEqual(record.USID, "1234567890");
+        }
+
+        [TestMethod]
         public void EISDataRecord_CleanFirstName_ShouldBeNoSpecialCharactersOrNumbers()
         {
             EISDataRecord record = BuildRecord();
-            record.FirstName = "!@#$%^&*()-_=+/?;:'\"~`.>,< }{][|\\1234567890";
+            record.FirstName = InvalidCharacters;
             record.CleanFirstName();
 
             Assert.AreEqual(record.FirstName, string.Empty);
@@ -133,7 +147,7 @@ namespace Randa.Assessment.Domain.Tests.DataRecord
         public void EISDataRecord_CleanFirstName_ShouldMatch()
         {
             EISDataRecord record = BuildRecord();
-            record.FirstName = "T1Y\\L()E!R";
+            record.FirstName = "T1y\\L()E!R";
             record.CleanFirstName();
 
             Assert.AreEqual(record.FirstName, "TYLER");
@@ -143,7 +157,7 @@ namespace Randa.Assessment.Domain.Tests.DataRecord
         public void EISDataRecord_CleanLastName_ShouldBeNoSpecialCharactersOrNumbers()
         {
             EISDataRecord record = BuildRecord();
-            record.LastName = "!@#$%^&*()-_=+/?;:'\"~`.>,< }{][|\\1234567890";
+            record.LastName = InvalidCharacters;
             record.CleanLastName();
 
             Assert.AreEqual(record.LastName, string.Empty);
@@ -153,10 +167,24 @@ namespace Randa.Assessment.Domain.Tests.DataRecord
         public void EISDataRecord_CleanLastName_ShouldMatch()
         {
             EISDataRecord record = BuildRecord();
-            record.LastName = "T1Y\\L()E!R";
+            record.LastName = "T1y\\L()E!R";
             record.CleanLastName();
 
             Assert.AreEqual(record.LastName, "TYLER");
+        }
+
+        [TestMethod]
+        public void EISDataRecord_CleanMiddleInitial_ShouldBeNoSpecialCharactersOrNumbers()
+        {
+            EISDataRecord record = BuildRecord();
+
+            foreach (char c in InvalidCharacters)
+            {
+                record.MiddleInitial = c;
+                record.CleanMiddleInitial();
+
+                Assert.AreEqual(record.MiddleInitial, '\0');
+            }
         }
     }
 }

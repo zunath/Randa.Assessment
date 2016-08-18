@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Randa.Assessment.Domain.Contracts.DataImporter;
 
@@ -25,6 +26,16 @@ namespace Randa.Assessment.Domain.DataRecord
         public virtual string GetJSON()
         {
             return JsonConvert.SerializeObject(this);
+        }
+
+        protected string RemoveSpecialCharactersAndNumbers(string str)
+        {
+            return Regex.Replace(str, "[^a-zA-Z]+", "", RegexOptions.Compiled);
+        }
+
+        protected string RemoveNonNumbers(string str)
+        {
+            return Regex.Replace(str, @"[^\d]", "", RegexOptions.Compiled);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using Randa.Assessment.Domain.Constants;
 
 namespace Randa.Assessment.Domain.DataRecord
 {
@@ -8,28 +9,24 @@ namespace Randa.Assessment.Domain.DataRecord
         public string TestAdminCode { get; set; }
         public string DistrictId { get; set; }
         public string SchoolId { get; set; }
-        public string Grade { get; set; }
+        public Grade Grade { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
-        public string MiddleInitial { get; set; }
+        public char MiddleInitial { get; set; }
         public string USID { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public string EthnicOrigin { get; set; }
+        public Ethnicity EthnicOrigin { get; set; }
         public bool IsRaceIndian { get; set; }
         public bool IsRaceAsian { get; set; }
         public bool IsRaceBlack { get; set; }
         public bool IsRacePacificIslander { get; set; }
         public bool IsRaceWhite { get; set; }
         public bool IsRaceUnspecified { get; set; }
-        public string Gender { get; set; }
-        public string CodeAB { get; set; }
+        public Gender Gender { get; set; }
+        public CodeAB CodeAB { get; set; }
 
         // TODO: Add more fields
 
-        private string RemoveSpecialCharactersAndNumbers(string str)
-        {
-            return Regex.Replace(str, "[^a-zA-Z]+", "", RegexOptions.Compiled);
-        }
 
         public override string GetKeyHash()
         {
@@ -49,16 +46,27 @@ namespace Randa.Assessment.Domain.DataRecord
         public void CleanUSID()
         {
             USID = USID.PadLeft(9, '0');
+            USID = RemoveNonNumbers(USID);
         }
 
         public void CleanFirstName()
         {
             FirstName = RemoveSpecialCharactersAndNumbers(FirstName);
+            FirstName = FirstName.ToUpper();
         }
 
         public void CleanLastName()
         {
             LastName = RemoveSpecialCharactersAndNumbers(LastName);
+            LastName = LastName.ToUpper();
+        }
+
+        public void CleanMiddleInitial()
+        {
+            string middleInitial = Convert.ToString(MiddleInitial);
+            middleInitial = RemoveSpecialCharactersAndNumbers(middleInitial);
+            middleInitial = middleInitial.ToUpper();
+            MiddleInitial = middleInitial.Length == 0 ? '\0' : Convert.ToChar(middleInitial);
         }
     }
 }
