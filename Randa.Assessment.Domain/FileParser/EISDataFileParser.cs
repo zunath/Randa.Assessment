@@ -6,7 +6,7 @@ using Randa.Assessment.Domain.Constants;
 using Randa.Assessment.Domain.Contracts.DataImporter;
 using Randa.Assessment.Domain.DataRecord;
 
-namespace Randa.Assessment.Infrastructure.FileParser
+namespace Randa.Assessment.Domain.FileParser
 {
     public class EISDataFileParser: IDataImportParser
     {

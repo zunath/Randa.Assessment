@@ -1,5 +1,4 @@
-﻿using Randa.Assessment.Domain.Contracts.DataImporter;
-using Randa.Assessment.Domain.DataImporter;
+﻿using Randa.Assessment.Domain.DataImporter;
 
 namespace Randa.Assessment.Domain.Contracts.DataProcessor
 {

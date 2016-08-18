@@ -95,7 +95,6 @@
     <Compile Include="Factory\AutofacValidatorFactory.cs" />
     <Compile Include="Factory\DataParserFactory.cs" />
     <Compile Include="Factory\DataRecordProcessorFactory.cs" />
-    <Compile Include="FileParser\EISDataFileParser.cs" />
     <Compile Include="Helper\Contracts\ISQLHelper.cs" />
     <Compile Include="Helper\SQLHelper.cs" />
     <Compile Include="IOC\IOCConfig.cs" />

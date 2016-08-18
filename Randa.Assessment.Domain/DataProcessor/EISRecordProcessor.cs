@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Randa.Assessment.Domain.Contracts.DataImporter;
 using Randa.Assessment.Domain.Contracts.DataProcessor;
-using Randa.Assessment.Domain.Contracts.Repository;
 using Randa.Assessment.Domain.DataImporter;
 using Randa.Assessment.Domain.DataRecord;
 

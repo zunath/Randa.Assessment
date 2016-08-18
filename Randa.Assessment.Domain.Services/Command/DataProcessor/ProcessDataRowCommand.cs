@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Randa.Assessment.Domain.DataImporter;
+﻿using Randa.Assessment.Domain.DataImporter;
 using Randa.Assessment.Domain.Services.Contracts.CQRS;
 
 namespace Randa.Assessment.Domain.Services.Command.DataProcessor

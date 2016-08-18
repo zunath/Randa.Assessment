@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Specialized;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Randa.Assessment.Domain.Constants;
 using Randa.Assessment.Domain.DataRecord;

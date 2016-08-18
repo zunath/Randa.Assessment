@@ -73,6 +73,7 @@
     <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\Calendar.cs" />
     <Compile Include="Entity\District.cs" />
+    <Compile Include="FileParser\EISDataFileParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\AcademicYearValidator.cs" />
     <Compile Include="Validators\AddressValidator.cs" />

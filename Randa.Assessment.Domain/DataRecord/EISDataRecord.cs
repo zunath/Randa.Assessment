@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using Randa.Assessment.Domain.Constants;
 
 namespace Randa.Assessment.Domain.DataRecord

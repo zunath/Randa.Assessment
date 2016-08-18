@@ -1,7 +1,6 @@
 ﻿using System;
 using Autofac;
 using Randa.Assessment.Domain.Contracts.DataImporter;
-using Randa.Assessment.Domain.Services.Contracts.CQRS;
 using Randa.Assessment.Domain.Services.Contracts.DataImporter;
 
 namespace Randa.Assessment.Infrastructure.Factory
