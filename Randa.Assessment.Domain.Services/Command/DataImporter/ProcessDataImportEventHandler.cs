@@ -45,10 +45,10 @@ namespace Randa.Assessment.Domain.Services.Command.DataImporter
                     }
 
                     row.DataHash = dataHash;
-                    row.LastUpdated = DateTime.UtcNow;
+                    row.DateLastUpdated = DateTime.UtcNow;
                     row.EventId = @event.EventId;
                     row.JSON = json;
-                    row.ProcessedDate = null;
+                    row.DateProcessed = null;
 
                     _repo.Save(row);
                 }

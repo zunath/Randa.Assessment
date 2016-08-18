@@ -10,8 +10,8 @@ namespace Randa.Assessment.Domain.DataImporter
         public string JSON { get; private set; }
         public string DataHash { get; private set; }
         public string KeyHash { get; private set; }
-        public DateTime LastUpdated { get; private set; }
-        public DateTime? ProcessedDate { get; private set; }
+        public DateTime DateLastUpdated { get; private set; }
+        public DateTime? DateProcessed { get; private set; }
 
         public static DataImportEventAudit Create(
             int eventId,
@@ -25,10 +25,10 @@ namespace Randa.Assessment.Domain.DataImporter
                 DataSourceId = dataSourceId,
                 EventId = eventId,
                 DataHash = dataHash,
-                LastUpdated = DateTime.UtcNow,
+                DateLastUpdated = DateTime.UtcNow,
                 KeyHash = keyHash,
                 JSON = json,
-                ProcessedDate = null
+                DateProcessed = null
             };
         }
     }

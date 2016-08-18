@@ -64,7 +64,6 @@
     <Compile Include="DataImporter\DataImportEvent.cs" />
     <Compile Include="DataImporter\DataImportEventAudit.cs" />
     <Compile Include="DataImporter\DataImportEventRow.cs" />
-    <Compile Include="DataImporter\DataImportSourceType.cs" />
     <Compile Include="DataRecord\BaseDataRecord.cs" />
     <Compile Include="DataRecord\EISDataRecord.cs" />
     <Compile Include="DataProcessor\EISRecordProcessor.cs" />

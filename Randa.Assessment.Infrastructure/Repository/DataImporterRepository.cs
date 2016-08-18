@@ -12,23 +12,17 @@ namespace Randa.Assessment.Infrastructure.Repository
             : base(connectionString, sqlHelper)
         {
         }
-
-        public DataImportSourceType GetDataSourceType(string dataSourceId)
-        {
-            return AdHocSQLSingle<DataImportSourceType>("SELECT DataSourceId, Name FROM DataImportSourceType WHERE DataSourceId=@dataSourceID", 
-                new SqlParameter("dataSourceId", dataSourceId));
-        }
         
         public DataImportEventRow GetDataImportEventRow(string dataSourceId, string keyHash)
         {
-            return AdHocSQLSingle<DataImportEventRow>("SELECT DataSourceId, EventId, KeyHash, JSON, DataHash, LastUpdated FROM DataImportEventRow WHERE DataSourceId=@dataSourceId AND KeyHash=@keyHash", 
+            return AdHocSQLSingle<DataImportEventRow>("SELECT DataSourceId, EventId, KeyHash, JSON, DataHash, DateLastUpdated FROM DataImportEventRow WHERE DataSourceId=@dataSourceId AND KeyHash=@keyHash", 
                 new SqlParameter("dataSourceId", dataSourceId), 
                 new SqlParameter("keyHash", keyHash));
         }
 
         public IEnumerable<DataImportEventRow> GetUnprocessedEventRows(string dataSourceId)
         {
-            return AdHocSQLMany<DataImportEventRow>("SELECT DataSourceId, EventId, KeyHash, JSON, DataHash, LastUpdated FROM DataImportEventRow WHERE DataSourceId=@dataSourceId",
+            return AdHocSQLMany<DataImportEventRow>("SELECT DataSourceId, EventId, KeyHash, JSON, DataHash, DateLastUpdated FROM DataImportEventRow WHERE DataSourceId=@dataSourceId",
                 new SqlParameter("dataSourceId", dataSourceId));
         }
 

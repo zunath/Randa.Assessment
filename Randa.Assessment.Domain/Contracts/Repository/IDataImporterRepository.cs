@@ -5,7 +5,6 @@ namespace Randa.Assessment.Domain.Contracts.Repository
 {
     public interface IDataImporterRepository
     {
-        DataImportSourceType GetDataSourceType(string dataSourceId);
         DataImportEventRow GetDataImportEventRow(string dataSourceId, string keyHash);
         IEnumerable<DataImportEventRow> GetUnprocessedEventRows(string dataSourceId);
 

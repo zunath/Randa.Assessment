@@ -9,7 +9,7 @@ namespace Randa.Assessment.Domain.DataImporter
         public string DataSourceId { get; set; }
         public string JSON { get; set; }
         public string DataHash { get; set; }
-        public DateTime LastUpdated { get; set; }
-        public DateTime? ProcessedDate { get; set; }
+        public DateTime DateLastUpdated { get; set; }
+        public DateTime? DateProcessed { get; set; }
     }
 }
